@@ -3,13 +3,13 @@ Description=Neoxa's distributed currency daemon
 After=network.target
 
 [Service]
-User=neoxacore
-Group=neoxacore
+User=smartmemecore
+Group=smartmemecore
 
 Type=forking
-PIDFile=/var/lib/neoxad/neoxad.pid
-ExecStart=/usr/bin/neoxad -daemon -pid=/var/lib/neoxad/neoxad.pid \
--conf=/etc/neoxacore/neoxa.conf -datadir=/var/lib/neoxad -disablewallet
+PIDFile=/var/lib/smartmemed/smartmemed.pid
+ExecStart=/usr/bin/smartmemed -daemon -pid=/var/lib/smartmemed/smartmemed.pid \
+-conf=/etc/smartmemecore/smartmeme.conf -datadir=/var/lib/smartmemed -disablewallet
 
 Restart=always
 PrivateTmp=true

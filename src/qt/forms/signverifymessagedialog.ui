@@ -352,7 +352,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../neoxa.qrc"/>
+  <include location="../smartmeme.qrc"/>
  </resources>
  <connections/>
 </ui>

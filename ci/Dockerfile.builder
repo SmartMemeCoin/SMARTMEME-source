@@ -17,9 +17,9 @@ RUN pip3 install pyzmq # really needed?
 RUN pip3 install jinja2
 RUN pip3 install flake8
 
-# neoxa_hash
-RUN git clone https://github.com/The-Neoxa-Endeavor/neoxa_hash
-RUN cd neoxa_hash && python3 setup.py install
+# smartmeme_hash
+RUN git clone https://github.com/The-Neoxa-Endeavor/smartmeme_hash
+RUN cd smartmeme_hash && python3 setup.py install
 
 ARG USER_ID=1000
 ARG GROUP_ID=1000
@@ -27,8 +27,8 @@ ARG GROUP_ID=1000
 # add user with specified (or default) user/group ids
 ENV USER_ID ${USER_ID}
 ENV GROUP_ID ${GROUP_ID}
-RUN groupadd -g ${GROUP_ID} neoxa
-RUN useradd -u ${USER_ID} -g neoxa -s /bin/bash -m -d /neoxa neoxa
+RUN groupadd -g ${GROUP_ID} smartmeme
+RUN useradd -u ${USER_ID} -g smartmeme -s /bin/bash -m -d /smartmeme smartmeme
 
 # Packages needed for all target builds
 RUN dpkg --add-architecture i386
@@ -55,13 +55,13 @@ RUN \
   update-alternatives --set x86_64-w64-mingw32-g++  /usr/bin/x86_64-w64-mingw32-g++-posix; \
   exit 0
 
-RUN mkdir /neoxa-src && \
+RUN mkdir /smartmeme-src && \
   mkdir -p /cache/ccache && \
   mkdir /cache/depends && \
   mkdir /cache/sdk-sources && \
-  chown $USER_ID:$GROUP_ID /neoxa-src && \
+  chown $USER_ID:$GROUP_ID /smartmeme-src && \
   chown $USER_ID:$GROUP_ID /cache && \
   chown $USER_ID:$GROUP_ID /cache -R
-WORKDIR /neoxa-src
+WORKDIR /smartmeme-src
 
-USER neoxa
+USER smartmeme

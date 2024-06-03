@@ -14,7 +14,7 @@
 #include "util.h"
 #include "validation.h"
 
-#include "test/test_neoxa.h"
+#include "test/test_smartmeme.h"
 
 #include <stdint.h>
 

@@ -1,9 +1,9 @@
 # Contents
-This directory contains tools to automatically get data about the memory consumption by some objects in neoxad process with the help of GDB debugger.
+This directory contains tools to automatically get data about the memory consumption by some objects in smartmemed process with the help of GDB debugger.
 
-## neoxa_dbg.sh
-This shell script attaches GDB to the running neoxad process (should be built with debug info), executes debug.gdb script and detaches.
-By default it uses testnet settings, see script comments to attach it to mainnet neoxad.
+## smartmeme_dbg.sh
+This shell script attaches GDB to the running smartmemed process (should be built with debug info), executes debug.gdb script and detaches.
+By default it uses testnet settings, see script comments to attach it to mainnet smartmemed.
 
 ## debug.gdb
 Contains debugger instructions to execute during attach: loads python code and executes it for the objects we want to investigate.

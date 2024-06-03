@@ -2134,7 +2134,7 @@ static bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, 
 static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
 
 void ThreadScriptCheck() {
-    RenameThread("neoxa-scriptch");
+    RenameThread("smartmeme-scriptch");
     scriptcheckqueue.Thread();
 }
 

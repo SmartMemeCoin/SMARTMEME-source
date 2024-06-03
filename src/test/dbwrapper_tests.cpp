@@ -5,7 +5,7 @@
 #include "dbwrapper.h"
 #include "uint256.h"
 #include "random.h"
-#include "test/test_neoxa.h"
+#include "test/test_smartmeme.h"
 
 #include <boost/test/unit_test.hpp>
 

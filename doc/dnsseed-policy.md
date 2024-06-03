@@ -50,4 +50,4 @@ situations but should be discussed in public in advance.
 
 See also
 ----------
-- [neoxa-seeder](https://github.com/nightlyThe-Neoxa-Endeavor/neoxa-seeder) is a reference implementation of a DNS seed.
+- [smartmeme-seeder](https://github.com/nightlyThe-Neoxa-Endeavor/smartmeme-seeder) is a reference implementation of a DNS seed.

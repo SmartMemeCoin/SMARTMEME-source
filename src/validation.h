@@ -9,7 +9,7 @@
 #define BITCOIN_VALIDATION_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/neoxa-config.h"
+#include "config/smartmeme-config.h"
 #endif
 
 #include "amount.h"

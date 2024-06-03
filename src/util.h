@@ -13,7 +13,7 @@
 #define BITCOIN_UTIL_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/neoxa-config.h"
+#include "config/smartmeme-config.h"
 #endif
 
 #include "compat.h"
@@ -360,7 +360,7 @@ void RenameThreadPool(ctpl::thread_pool& tp, const char* baseName);
  */
 template <typename Callable> void TraceThread(const char* name,  Callable func)
 {
-    std::string s = strprintf("neoxa-%s", name);
+    std::string s = strprintf("smartmeme-%s", name);
     RenameThread(s.c_str());
     try
     {

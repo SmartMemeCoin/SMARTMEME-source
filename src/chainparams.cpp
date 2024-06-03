@@ -447,9 +447,9 @@ public:
         assert(genesis.hashMerkleRoot == uint256S("0x"));
 
         //todo: Make dnsseeder ourselfs
-        // vSeeds.emplace_back("seed.neoxa.net", false);
-	    // vSeeds.emplace_back("seed1.neoxa.net", false);
-	    // vSeeds.emplace_back("seed2.neoxa.net", false);
+        // vSeeds.emplace_back("seed.smartmeme.net", false);
+	    // vSeeds.emplace_back("seed1.smartmeme.net", false);
+	    // vSeeds.emplace_back("seed2.smartmeme.net", false);
 
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 63);  // 'S' for public key addresses
@@ -643,7 +643,7 @@ public:
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
-        vSeeds.emplace_back("testnet.neoxa.net", false);
+        vSeeds.emplace_back("testnet.smartmeme.net", false);
 
         // Testnet Neoxa addresses start with 'r'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,42);
@@ -814,7 +814,7 @@ public:
 
         vFixedSeeds.clear();
         vSeeds.clear();
-        //vSeeds.push_back(CDNSSeedData("neoxaevo.org",  "devnet-seed.neoxaevo.org"));
+        //vSeeds.push_back(CDNSSeedData("smartmemeevo.org",  "devnet-seed.smartmemeevo.org"));
 
         // Testnet Neoxa addresses start with 'y'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,140);
