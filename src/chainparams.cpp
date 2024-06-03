@@ -438,7 +438,7 @@ public:
         nDefaultPort = 7282;
         nPruneAfterHeight = 100000;
         FindMainNetGenesisBlock(1717416548, 0x20001fff, "main");
-        uint32_t nGenesisTime = 1651442858;	
+        uint32_t nGenesisTime = 1717416548;	
 
 	    genesis = CreateGenesisBlock(nGenesisTime, 3244753, 0x20001fff, 4, 5000 * COIN);
         consensus.hashGenesisBlock = genesis.GetX16RHash();	
