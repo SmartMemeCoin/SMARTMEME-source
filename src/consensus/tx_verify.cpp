@@ -200,8 +200,8 @@ bool CheckTransaction(const CTransaction& tx, CValidationState &state, int nHeig
         if (!MoneyRange(nValueOut))
             return state.DoS(100, false, REJECT_INVALID, "bad-txns-txouttotal-toolarge");
 
-        /** NEOX START */
-        // Find and handle all new OP_NEOX_ASSET null data transactions
+        /** SMME START */
+        // Find and handle all new OP_SMME_ASSET null data transactions
         if (txout.scriptPubKey.IsNullAsset()) {
             CNullAssetTxData data;
             std::string address;
@@ -254,9 +254,9 @@ bool CheckTransaction(const CTransaction& tx, CValidationState &state, int nHeig
                 fContainsNullAssetVerifierTx = true;
             }
         }
-        /** NEOX END */
+        /** SMME END */
 
-        /** NEOX START */
+        /** SMME START */
         bool isAsset = false;
         int nType;
         bool fIsOwner;
@@ -361,7 +361,7 @@ bool CheckTransaction(const CTransaction& tx, CValidationState &state, int nHeig
         }
     }
 
-    /** NEOX END */
+    /** SMME END */
 
     // Check for duplicate inputs
     std::set<COutPoint> vInOutPoints;
@@ -412,7 +412,7 @@ bool CheckTransaction(const CTransaction& tx, CValidationState &state, int nHeig
                 return state.DoS(10, false, REJECT_INVALID, "bad-txns-prevout-null");
     }
 
-    /** NEOX START */
+    /** SMME START */
     if (tx.IsNewAsset()) {
         /** Verify the reissue assets data */
         std::string strError = "";
@@ -542,7 +542,7 @@ bool CheckTransaction(const CTransaction& tx, CValidationState &state, int nHeig
     }
     else {
         // Fail if transaction contains any non-transfer asset scripts and hasn't conformed to one of the
-        // above transaction types.  Also fail if it contains OP_NEOX_ASSET opcode but wasn't a valid script.
+        // above transaction types.  Also fail if it contains OP_SMME_ASSET opcode but wasn't a valid script.
         for (auto out : tx.vout) {
             int nType;
             bool _isOwner;
@@ -551,10 +551,10 @@ bool CheckTransaction(const CTransaction& tx, CValidationState &state, int nHeig
                     return state.DoS(100, false, REJECT_INVALID, "bad-txns-bad-asset-transaction");
                 }
             } else {
-                if (out.scriptPubKey.Find(OP_NEOX_ASSET)) {
-                    if (out.scriptPubKey[0] != OP_NEOX_ASSET) {
+                if (out.scriptPubKey.Find(OP_SMME_ASSET)) {
+                    if (out.scriptPubKey[0] != OP_SMME_ASSET) {
                         return state.DoS(100, false, REJECT_INVALID,
-                                         "bad-txns-op-NEOX-asset-not-in-right-script-location");
+                                         "bad-txns-op-SMME-asset-not-in-right-script-location");
                     }
                 }
             }
@@ -571,7 +571,7 @@ bool CheckTransaction(const CTransaction& tx, CValidationState &state, int nHeig
     }
 
     // we allow restricted asset reissuance without having a verifier string transaction, we don't force it to be update
-    /** NEOX END */
+    /** SMME END */
 
     return true;
 }
@@ -624,7 +624,7 @@ bool Consensus::CheckTxInputs(const CTransaction& tx, CValidationState& state, c
 	}
     return true;
 }
- /* NEOX ASSETS START */ 
+ /* SMME ASSETS START */ 
 
     //! Check to make sure that the inputs and outputs CAmount match exactly.
 //! Check to make sure that the inputs and outputs CAmount match exactly.
@@ -857,9 +857,9 @@ bool Consensus::CheckTxAssets(const CTransaction& tx, CValidationState& state, c
                         return state.DoS(100, false, REJECT_INVALID, "bad-txns-bad-asset-transaction" );
                     }
                 } else {
-                    if (out.scriptPubKey.Find(OP_NEOX_ASSET)) {
+                    if (out.scriptPubKey.Find(OP_SMME_ASSET)) {
                         if (AreRestrictedAssetsDeployed()) {
-                            if (out.scriptPubKey[0] != OP_NEOX_ASSET) {
+                            if (out.scriptPubKey[0] != OP_SMME_ASSET) {
                                 return state.DoS(100, false, REJECT_INVALID,
                                                  "bad-txns-op-neox-asset-not-in-right-script-location");
                             }
@@ -893,4 +893,4 @@ bool Consensus::CheckTxAssets(const CTransaction& tx, CValidationState& state, c
     return true;
 }
 
-    /* NEOX ASSETS END */
+    /* SMME ASSETS END */

@@ -20,9 +20,9 @@ BitcoinUnits::BitcoinUnits(QObject *parent):
 QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(NEOX);
-    unitlist.append(mNEOX);
-    unitlist.append(uNEOX);
+    unitlist.append(SMME);
+    unitlist.append(mSMME);
+    unitlist.append(uSMME);
     return unitlist;
 }
 
@@ -30,9 +30,9 @@ bool BitcoinUnits::valid(int unit)
 {
     switch(unit)
     {
-    case NEOX:
-    case mNEOX:
-    case uNEOX:
+    case SMME:
+    case mSMME:
+    case uSMME:
         return true;
     default:
         return false;
@@ -45,9 +45,9 @@ QString BitcoinUnits::name(int unit)
     {
         switch(unit)
         {
-            case NEOX: return QString("NEOX");
-            case mNEOX: return QString("mNEOX");
-            case uNEOX: return QString::fromUtf8("μNEOX");
+            case SMME: return QString("SMME");
+            case mSMME: return QString("mSMME");
+            case uSMME: return QString::fromUtf8("μSMME");
             default: return QString("???");
         }
     }
@@ -55,9 +55,9 @@ QString BitcoinUnits::name(int unit)
     {
         switch(unit)
         {
-            case NEOX: return QString("tNEOX");
-            case mNEOX: return QString("mtNEOX");
-            case uNEOX: return QString::fromUtf8("μtNEOX");
+            case SMME: return QString("tSMME");
+            case mSMME: return QString("mtSMME");
+            case uSMME: return QString::fromUtf8("μtSMME");
             default: return QString("???");
         }
     }
@@ -69,9 +69,9 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case NEOX: return QString("Neoxa");
-            case mNEOX: return QString("Milli-Neoxa (1 / 1" THIN_SP_UTF8 "000)");
-            case uNEOX: return QString("Micro-Neoxa (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case SMME: return QString("Neoxa");
+            case mSMME: return QString("Milli-Neoxa (1 / 1" THIN_SP_UTF8 "000)");
+            case uSMME: return QString("Micro-Neoxa (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
@@ -79,9 +79,9 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case NEOX: return QString("TestNeoxa");
-            case mNEOX: return QString("Milli-TestNeoxa (1 / 1" THIN_SP_UTF8 "000)");
-            case uNEOX: return QString("Micro-TestNeoxa (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case SMME: return QString("TestNeoxa");
+            case mSMME: return QString("Milli-TestNeoxa (1 / 1" THIN_SP_UTF8 "000)");
+            case uSMME: return QString("Micro-TestNeoxa (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
@@ -91,9 +91,9 @@ qint64 BitcoinUnits::factor(int unit)
 {
     switch(unit)
     {
-        case NEOX:  return 100000000;
-        case mNEOX: return 100000;
-        case uNEOX: return 100;
+        case SMME:  return 100000000;
+        case mSMME: return 100000;
+        case uSMME: return 100;
         default:   return 100000000;
     }
 }
@@ -119,9 +119,9 @@ int BitcoinUnits::decimals(int unit)
 {
     switch(unit)
     {
-        case NEOX: return 8;
-        case mNEOX: return 5;
-        case uNEOX: return 2;
+        case SMME: return 8;
+        case mSMME: return 5;
+        case uSMME: return 2;
         default: return 0;
     }
 }
@@ -176,7 +176,7 @@ QString BitcoinUnits::formatWithUnit(int unit, const CAmount& amount, bool pluss
 
 QString BitcoinUnits::formatWithCustomName(QString customName, const CAmount& amount, int unit, bool plussign, SeparatorStyle separators)
 {
-    return format(NEOX, amount / factorAsset(MAX_ASSET_UNITS - unit), plussign, separators, unit) + QString(" ") + customName;
+    return format(SMME, amount / factorAsset(MAX_ASSET_UNITS - unit), plussign, separators, unit) + QString(" ") + customName;
 }
 
 QString BitcoinUnits::formatHtmlWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)

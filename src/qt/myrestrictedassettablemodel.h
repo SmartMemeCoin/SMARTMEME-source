@@ -53,7 +53,7 @@ public:
                 TxPlainTextRole,
         /** Unprocessed icon */
                 RawDecorationRole,
-        /** NEOX or name of an asset */
+        /** SMME or name of an asset */
                 AssetNameRole,
     };
 

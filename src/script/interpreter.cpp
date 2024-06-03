@@ -1028,7 +1028,7 @@ bool EvalScript(std::vector<std::vector<unsigned char> >& stack, const CScript& 
                 }
                 break;
 
-                case OP_NEOX_ASSET:
+                case OP_SMME_ASSET:
                     break;
 
                 default:

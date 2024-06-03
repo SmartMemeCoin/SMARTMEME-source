@@ -146,7 +146,7 @@ You retain control of your money at all times.<hr> \
 <b>The PrivateSend process works like this:</b>\
 <ol type=\"1\"> \
 <li>PrivateSend begins by breaking your transaction inputs down into standard denominations. \
-These denominations are 0.1 NEOX, 1 NEOX, 10 NEOX, 100 NEOX and 1000 NEOX -- sort of like the paper money you use every day.</li> \
+These denominations are 0.1 SMME, 1 SMME, 10 SMME, 100 SMME and 1000 SMME -- sort of like the paper money you use every day.</li> \
 <li>Your wallet then sends requests to specially configured software nodes on the network, called \"smartnodes.\" \
 These smartnodes are informed then that you are interested in mixing a certain denomination. \
 No identifiable information is sent to the smartnodes, so they never know \"who\" you are.</li> \

@@ -222,7 +222,7 @@ CCoinsViewDB *pcoinsdbview = nullptr;
 CCoinsViewCache *pcoinsTip = nullptr;
 CBlockTreeDB *pblocktree = nullptr;
 
-/* NEOX ASSETS START */
+/* SMME ASSETS START */
 CAssetsDB *passetsdb = nullptr;
 CAssetsCache *passets = nullptr;
 CLRUCache<std::string, CDatabasedAssetData> *passetsCache = nullptr;
@@ -241,7 +241,7 @@ CLRUCache<std::string, int8_t> *passetsQualifierCache = nullptr;
 CLRUCache<std::string, int8_t> *passetsRestrictionCache = nullptr;
 CLRUCache<std::string, int8_t> *passetsGlobalRestrictionCache = nullptr;
 CRestrictedDB *prestricteddb = nullptr;
-/* NEOX ASSETS END*/
+/* SMME ASSETS END*/
 
 enum FlushStateMode {
     FLUSH_STATE_NONE,
@@ -686,7 +686,7 @@ static bool AcceptToMemoryPoolWorker(const CChainParams& chainparams, CTxMemPool
             return error("%s: Consensus::CheckTxInputs: %s, %s", __func__, tx.GetHash().ToString(), FormatStateMessage(state));
         }
 
-        /** NEOX START START */
+        /** SMME START START */
         if (!AreAssetsDeployed()) {
             for (auto out : tx.vout) {
                 if (out.scriptPubKey.IsAssetScript())
@@ -700,7 +700,7 @@ static bool AcceptToMemoryPoolWorker(const CChainParams& chainparams, CTxMemPool
                                 FormatStateMessage(state));
             }
         }
-        /** NEOX ASSETS END */
+        /** SMME ASSETS END */
 
         // Check for non-standard pay-to-script-hash in inputs
         if (fRequireStandard && !AreInputsStandard(tx, view))
@@ -1370,7 +1370,7 @@ void UpdateCoins(const CTransaction& tx, CCoinsViewCache& inputs, CTxUndo &txund
         }
     }
     // add outputs
-    AddCoins(inputs, tx, nHeight, blockHash, false, assetCache, undoAssetData); /** NEOX START */ /* Pass assetCache into function */ /** NEOX END */
+    AddCoins(inputs, tx, nHeight, blockHash, false, assetCache, undoAssetData); /** SMME START */ /* Pass assetCache into function */ /** SMME END */
 }
 
 void UpdateCoins(const CTransaction& tx, CCoinsViewCache& inputs, CTxUndo &txundo, int nHeight)
@@ -1719,7 +1719,7 @@ static DisconnectResult DisconnectBlock(const CBlock& block, const CBlockIndex* 
                     addressIndex.push_back(std::make_pair(CAddressIndexKey(1, hashBytes, pindex->nHeight, i, hash, k, false), out.nValue));
                     addressUnspentIndex.push_back(std::make_pair(CAddressUnspentKey(1, hashBytes, hash, k), CAddressUnspentValue()));
                 } else {
-                  /** NEOX ASSETS START */
+                  /** SMME ASSETS START */
                     if (AreAssetsDeployed()) {
                         std::string assetName;
                         CAmount assetAmount;
@@ -1742,7 +1742,7 @@ static DisconnectResult DisconnectBlock(const CBlock& block, const CBlockIndex* 
                             continue;
                         }
                     }
-                    /** NEOX ASSETS END */
+                    /** SMME ASSETS END */
                 }
             }
 
@@ -1759,7 +1759,7 @@ static DisconnectResult DisconnectBlock(const CBlock& block, const CBlockIndex* 
                 if (!is_spent || tx.vout[o] != coin.out || pindex->nHeight != coin.nHeight || is_coinbase != coin.fCoinBase) {
                     fClean = false; // transaction output mismatch
                 }
-                /** NEOX ASSETS START */
+                /** SMME ASSETS START */
                 if (AreAssetsDeployed()) {
                     if (assetsCache) {
                         if (IsScriptTransferAsset(tx.vout[o].scriptPubKey))
@@ -1780,7 +1780,7 @@ static DisconnectResult DisconnectBlock(const CBlock& block, const CBlockIndex* 
                 }
             }
         }
-        /** NEOX START */
+        /** SMME START */
         if (AreAssetsDeployed()) {
             if (assetsCache) {
                 if (tx.IsNewAsset()) {
@@ -1997,7 +1997,7 @@ static DisconnectResult DisconnectBlock(const CBlock& block, const CBlockIndex* 
                 } 
             }
         }
-        /** NEOX END */
+        /** SMME END */
 
         // restore inputs
         if (i > 0) { // not coinbases
@@ -2047,7 +2047,7 @@ static DisconnectResult DisconnectBlock(const CBlock& block, const CBlockIndex* 
                         addressIndex.push_back(std::make_pair(CAddressIndexKey(1, hashBytes, pindex->nHeight, i, hash, j, false), prevout.nValue));
                         addressUnspentIndex.push_back(std::make_pair(CAddressUnspentKey(1, hashBytes, hash, j), CAddressUnspentValue()));
                     } else  {
-                        /** NEOX ASSETS START */
+                        /** SMME ASSETS START */
                         if (AreAssetsDeployed()) {
                             std::string assetName;
                             CAmount assetAmount;
@@ -2071,7 +2071,7 @@ static DisconnectResult DisconnectBlock(const CBlock& block, const CBlockIndex* 
                                 continue;
                             }
                         }
-                        /** NEOX ASSETS END */
+                        /** SMME ASSETS END */
                     }
                 }
 
@@ -2394,7 +2394,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
                 return state.DoS(100, error("%s: accumulated specialTxFees in the block out of range.", __func__),
                                  REJECT_INVALID, "bad-txns-accumulated-specialTxFees-outofrange");
             }
-             /** NEOX START START */
+             /** SMME START START */
             if (!AreAssetsDeployed()) {
                 for (auto out : tx.vout)
                     if (out.scriptPubKey.IsAssetScript())
@@ -2408,7 +2408,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
                                  FormatStateMessage(state));
                 }
             }
-            /** NEOX ASSETS END */
+            /** SMME ASSETS END */
 
             // Check that transaction is BIP68 final
             // BIP68 lock checks (as opposed to nLockTime checks) must
@@ -2445,7 +2445,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
                         hashBytes = Hash160(prevout.scriptPubKey.begin()+1, prevout.scriptPubKey.end()-1);
                         addressType = 1;
                     } else {
-                        /** NEOX START */
+                        /** SMME START */
                         if (AreAssetsDeployed()) {
                             hashBytes.SetNull();
                             addressType = 0;
@@ -2454,21 +2454,21 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
                                 isAsset = true;
                             }
                         } else {
-                            /** NEOX END */
+                            /** SMME END */
                             hashBytes.SetNull();
                             addressType = 0;
                         }
                     }
 
                     if (fAddressIndex && addressType > 0) {
-                        /** NEOX START */
+                        /** SMME START */
                         if (isAsset) {
                             // record spending activity
                             addressIndex.push_back(std::make_pair(CAddressIndexKey(addressType, hashBytes, assetName, pindex->nHeight, i, txhash, j, true), assetAmount * -1));
 
                             // remove address from unspent index
                             addressUnspentIndex.push_back(std::make_pair(CAddressUnspentKey(addressType, hashBytes, assetName, input.prevout.hash, input.prevout.n), CAddressUnspentValue()));
-                        /** NEOX END */
+                        /** SMME END */
                         } else {
                             // record spending activity
                             addressIndex.push_back(std::make_pair(CAddressIndexKey(addressType, hashBytes, pindex->nHeight, i, txhash, j, true), prevout.nValue * -1));
@@ -2537,7 +2537,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
                     addressIndex.push_back(std::make_pair(CAddressIndexKey(1, hashBytes, pindex->nHeight, i, txhash, k, false), out.nValue));
                     addressUnspentIndex.push_back(std::make_pair(CAddressUnspentKey(1, hashBytes, txhash, k), CAddressUnspentValue(out.nValue, out.scriptPubKey, pindex->nHeight)));
                 } else {
-                    /** NEOX START */
+                    /** SMME START */
                     if (AreAssetsDeployed()) {
                         std::string assetName;
                         CAmount assetAmount;
@@ -2558,7 +2558,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
                     } else {
                         continue;
                     }
-                    /** NEOX END */
+                    /** SMME END */
                 }
 
             }
@@ -2569,11 +2569,11 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
             blockundo.vtxundo.push_back(CTxUndo());
         }
 
-        /** NEOX START */
+        /** SMME START */
         // Create the basic empty string pair for the undoblock
         std::pair<std::string, CBlockAssetUndo> undoPair = std::make_pair("", CBlockAssetUndo());
         std::pair<std::string, CBlockAssetUndo>* undoAssetData = &undoPair;
-        /** NEOX END */
+        /** SMME END */
 
         UpdateCoins(tx, view, i == 0 ? undoDummy : blockundo.vtxundo.back(), pindex->nHeight, block.GetHash(), assetsCache, undoAssetData);
 
@@ -2880,7 +2880,7 @@ bool static FlushStateToDisk(const CChainParams& chainparams, CValidationState &
             if (!evoDb->CommitRootTransaction()) {
                 return AbortNode(state, "Failed to commit EvoDB");
             }
-            /** NEOX START */
+            /** SMME START */
             // Flush the assetstate
             if (AreAssetsDeployed()) {
                 // Flush the assetstate
@@ -2908,7 +2908,7 @@ bool static FlushStateToDisk(const CChainParams& chainparams, CValidationState &
                         return AbortNode(state, "Failed to Flush the message channel database");
                 }
             }
-            /** NEOX END */
+            /** SMME END */
 
             nLastFlush = nNow;
         }
@@ -3226,7 +3226,7 @@ bool static ConnectTip(CValidationState& state, const CChainParams& chainparams,
 
     connectTrace.BlockConnected(pindexNew, std::move(pthisBlock));
 
-        /** NEOX START */
+        /** SMME START */
 
     //  Determine if the new block height has any pending snapshot requests,
     //      and if so, capture a snapshot of the relevant target assets.
@@ -3253,7 +3253,7 @@ bool static ConnectTip(CValidationState& state, const CChainParams& chainparams,
         CheckRewardDistributions(vpwallets[0]);
     }
 #endif
-    /** NEOX END */
+    /** SMME END */
     return true;
 }
 
@@ -4337,9 +4337,9 @@ bool TestBlockValidity(CValidationState& state, const CChainParams& chainparams,
 
     // begin tx and let it rollback
     auto dbTx = evoDb->BeginTransaction();
-    /** NEOX ASSETS START */
+    /** SMME ASSETS START */
     CAssetsCache assetCache = *GetCurrentAssetCache();
-    /** NEOX ASSETS END */
+    /** SMME ASSETS END */
     // NOTE: CheckBlockHeader is called by CheckBlock
     if (!ContextualCheckBlockHeader(block, state, chainparams, pindexPrev, GetAdjustedTime()))
         return error("%s: Consensus::ContextualCheckBlockHeader: %s", __func__, FormatStateMessage(state));
@@ -4920,7 +4920,7 @@ static bool RollforwardBlock(const CBlockIndex* pindex, CCoinsViewCache& inputs,
     // MUST process special txes before updating UTXO to ensure consistency between mempool and block processing
     CValidationState state;
     if (!ProcessSpecialTxsInBlock(block, pindex, state, false /*fJustCheck*/, false /*fScriptChecks*/)) {
-        return error("RollforwardBlock(NEOX): ProcessSpecialTxsInBlock for block %s failed with %s",
+        return error("RollforwardBlock(SMME): ProcessSpecialTxsInBlock for block %s failed with %s",
             pindex->GetBlockHash().ToString(), FormatStateMessage(state));
     }
 

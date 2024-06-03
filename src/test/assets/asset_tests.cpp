@@ -52,7 +52,7 @@ BOOST_FIXTURE_TEST_SUITE(asset_tests, BasicTestingSetup)
         BOOST_CHECK(!IsAssetNameValid("RVN", type));
         BOOST_CHECK(!IsAssetNameValid("RAVEN", type));
         BOOST_CHECK(!IsAssetNameValid("RAVENCOIN", type));
-        BOOST_CHECK(!IsAssetNameValid("NEOX", type));
+        BOOST_CHECK(!IsAssetNameValid("SMME", type));
         BOOST_CHECK(!IsAssetNameValid("SMARTMEME", type));
 
         //- Versions of SMARTMEME ALLOWED
