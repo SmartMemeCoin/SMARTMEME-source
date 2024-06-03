@@ -352,18 +352,18 @@ class CMainParams : public CChainParams {
 public:
     CMainParams() {
         strNetworkID = "main";
-        consensus.nSubsidyHalvingInterval = 2100000; // Note: actual number of blocks per calendar year with DGW v3 is ~200700 (for example 449750 - 249050)
+        consensus.nSubsidyHalvingInterval = 26000; // Note: actual number of blocks per calendar year with DGW v3 is ~200700 (for example 449750 - 249050)
         consensus.nSmartnodePaymentsStartBlock = 60; // 
         consensus.nSmartnodePaymentsIncreaseBlock = 158000; // actual historical value
         consensus.nSmartnodePaymentsIncreasePeriod = 576*30; // 17280 - actual historical value
         consensus.nInstantSendConfirmationsRequired = 6;
         consensus.nInstantSendKeepLock = 24;
-        consensus.nBudgetPaymentsStartBlock = 99999999; // actual historical value
-        consensus.nBudgetPaymentsCycleBlocks = 99999999; // ~(60*24*30)/2.6, actual number of blocks per month is 200700 / 12 = 16725
+        consensus.nBudgetPaymentsStartBlock = 72827282; // actual historical value
+        consensus.nBudgetPaymentsCycleBlocks = 72827282; // ~(60*24*30)/2.6, actual number of blocks per month is 200700 / 12 = 16725
         consensus.nBudgetPaymentsWindowBlocks = 100;
-        consensus.nSuperblockStartBlock = 99999999; // The block at which 12.1 goes live (end of final 12.0 budget cycle)
+        consensus.nSuperblockStartBlock = 72827282; // The block at which 12.1 goes live (end of final 12.0 budget cycle)
         consensus.nSuperblockStartHash = uint256S("0000000000020cb27c7ef164d21003d5d20cdca2f54dd9a9ca6d45f4d47f8aa3");
-        consensus.nSuperblockCycle = 99999999; // ~(60*24*30)/2.6, actual number of blocks per month is 200700 / 12 = 16725
+        consensus.nSuperblockCycle = 72827282; // ~(60*24*30)/2.6, actual number of blocks per month is 200700 / 12 = 16725
         consensus.nGovernanceMinQuorum = 10;
         consensus.nGovernanceFilterElements = 20000;
         consensus.nSmartnodeMinimumConfirmations = 15;
@@ -372,7 +372,7 @@ public:
         consensus.BIP65Enabled = true; // 00000000000076d8fcea02ec0963de4abfd01e771fec0863f960c2c64fe6f357
         consensus.BIP66Enabled = true; // 00000000000b1fa2dfa312863570e13fae9ca7b5566cb27e55422620b469aefa
         consensus.nSegwitEnabled = true;
-        consensus.DIP0003Height = 620000;
+        consensus.DIP0003Height = 1;
         consensus.DIP0008Enabled = true;
        // consensus.DIP0003EnforcementHeight = 1047200;
         consensus.powLimit = uint256S("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 20
@@ -384,7 +384,7 @@ public:
         consensus.DGWBlocksAvg = 60;
         consensus.nRuleChangeActivationThreshold = 1916; // 95% of 2016
         consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
-        consensus.smartnodePaymentFixedBlock = 620000;
+        consensus.smartnodePaymentFixedBlock = 1;
         consensus.nAssetsForkBlock = 1;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1653004800; // January 1, 2008
@@ -435,12 +435,12 @@ public:
         pchMessageStart[1] = 0x41; // A
         pchMessageStart[2] = 0x4d; // M
         pchMessageStart[3] = 0x45; // E
-        nDefaultPort = 8788;
+        nDefaultPort = 7282;
         nPruneAfterHeight = 100000;
         FindMainNetGenesisBlock(1717416548, 0x20001fff, "main");
         uint32_t nGenesisTime = 1651442858;	
 
-	    genesis = CreateGenesisBlock(nGenesisTime, 3244753, 0x1e00ffff, 4, 5000 * COIN);
+	    genesis = CreateGenesisBlock(nGenesisTime, 3244753, 0x20001fff, 4, 5000 * COIN);
         consensus.hashGenesisBlock = genesis.GetX16RHash();	
         //std::cout << "hashGenesisBlock " << consensus.hashGenesisBlock.GetHex() << std::endl;
 	    assert(consensus.hashGenesisBlock == uint256S("0x"));
@@ -498,26 +498,16 @@ public:
 
         checkpointData = {
             {  
-                {0, uint256S("0000000a50fdaaf22f1c98b8c61559e15ab2269249aa1fb20683180703cdbf07")},
-                {1600, uint256S("000000000dae516974be0590d0dcd1ba8ecd28f6969cd04b719dfec483445286")},
-                {1900, uint256S("00000000008ec6725fd46ab63b46d30f34632ce3caec68c59aae5fc19092871f")},
-                {2582, uint256S("00000000002029b6964d84ee232c027573c9b33da2673f9cdeed5238a1b65a32")},
-                {7028, uint256S("0000000000f6e894e284e9a447ecdcfe888623d2df9d908c49904a4e04b53431")},
-                {7339, uint256S("00000000012be3885f8c8648cacf55b1ee45021cf3c5dd214c61526e5bf81363")},
-                {20000, uint256S("0000000000e244579b5e0a2622db902bba222022577aff23169506893bb18fc2")},
-                {28862, uint256S("000000000032b28e62977a388f241c3119a00e375471b84569995d1e29a63e0b")},
-                {35900, uint256S("00000000006fa70f70804bc376871d1a75a6b120b32948f0c97b6cb69f05c0ec")},
-                {157581, uint256S("0000000000008ea299bed393aaeedcdac66baf26c7228c60636fa432addc4777")},
-                {568654, uint256S("00000000000455f159bd9ab7d027ef7f0edec468a903670ab6e2ea2351f355b6")}  
+                {0, uint256S("0000000a50fdaaf22f1c98b8c61559e15ab2269249aa1fb20683180703cdbf07")} 
             }
 	    };
 
         chainTxData = ChainTxData{
             // Update as we know more about the contents of the Neoxa chain
-        	1662386772, // * UNIX timestamp of last known number of transactions 2021-06-18 22:03:06 UTC
-            130153,    // * total number of transactions between genesis and that timestamp
+        	1717416548, // * UNIX timestamp of last known number of transactions 2021-06-18 22:03:06 UTC
+            0,    // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
-            0.05014635153727871       // * estimated number of transactions per second after that timestamp
+            0.0       // * estimated number of transactions per second after that timestamp
         };
 
          // Burn Amounts
@@ -916,7 +906,7 @@ public:
         consensus.nMinerConfirmationWindow = 144; // Faster than normal for regtest (144 instead of 2016)
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 0;
-        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 999999999999ULL;
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 728272827282ULL;
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00");
