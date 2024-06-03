@@ -45,8 +45,8 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
 
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "The Times 03/30/2021 Bitcoin is name of the game for new generation of firms";
-    const CScript genesisOutputScript = CScript() << ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f") << OP_CHECKSIG;
+    const char* pszTimestamp = "Game Time 03/30/2024 SmartMeme revolutionizes gaming with blockchain rewards";
+    const CScript genesisOutputScript = CScript() << ParseHex("04d6f0d3a89a997cbab6b38417f0e414a4548afd41a003fa0007669ab5ecc35d4b3b74ec102e49775610a684380a2e23f6d3874b1a5bd5ddf13d3b173395ed0ae0") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
@@ -353,17 +353,17 @@ public:
     CMainParams() {
         strNetworkID = "main";
         consensus.nSubsidyHalvingInterval = 2100000; // Note: actual number of blocks per calendar year with DGW v3 is ~200700 (for example 449750 - 249050)
-        consensus.nSmartnodePaymentsStartBlock = 99999; // 
+        consensus.nSmartnodePaymentsStartBlock = 60; // 
         consensus.nSmartnodePaymentsIncreaseBlock = 158000; // actual historical value
         consensus.nSmartnodePaymentsIncreasePeriod = 576*30; // 17280 - actual historical value
         consensus.nInstantSendConfirmationsRequired = 6;
         consensus.nInstantSendKeepLock = 24;
-        consensus.nBudgetPaymentsStartBlock = INT_MAX; // actual historical value
-        consensus.nBudgetPaymentsCycleBlocks = 16616; // ~(60*24*30)/2.6, actual number of blocks per month is 200700 / 12 = 16725
+        consensus.nBudgetPaymentsStartBlock = 99999999; // actual historical value
+        consensus.nBudgetPaymentsCycleBlocks = 99999999; // ~(60*24*30)/2.6, actual number of blocks per month is 200700 / 12 = 16725
         consensus.nBudgetPaymentsWindowBlocks = 100;
-        consensus.nSuperblockStartBlock = INT_MAX; // The block at which 12.1 goes live (end of final 12.0 budget cycle)
+        consensus.nSuperblockStartBlock = 99999999; // The block at which 12.1 goes live (end of final 12.0 budget cycle)
         consensus.nSuperblockStartHash = uint256S("0000000000020cb27c7ef164d21003d5d20cdca2f54dd9a9ca6d45f4d47f8aa3");
-        consensus.nSuperblockCycle = 16616; // ~(60*24*30)/2.6, actual number of blocks per month is 200700 / 12 = 16725
+        consensus.nSuperblockCycle = 99999999; // ~(60*24*30)/2.6, actual number of blocks per month is 200700 / 12 = 16725
         consensus.nGovernanceMinQuorum = 10;
         consensus.nGovernanceFilterElements = 20000;
         consensus.nSmartnodeMinimumConfirmations = 15;
@@ -421,7 +421,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0003].nThreshold = 3226; // 80% of 4032
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0000000000000000000000000000000000000000000000001395dd8e70866177"); // 0
+        consensus.nMinimumChainWork = uint256S("0000000000000000000000000000000000000000000000000000000000000000"); // 0
 
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0xc99ce3a58ba3828a1a09469d0afedb91e8238e6cb4fd2bc3970c9ff56bbbb528"); // 0
@@ -437,39 +437,38 @@ public:
         pchMessageStart[3] = 0x45; // E
         nDefaultPort = 8788;
         nPruneAfterHeight = 100000;
-   //   FindMainNetGenesisBlock(1652138420, 0x20001fff, "main");
+        FindMainNetGenesisBlock(1717416548, 0x20001fff, "main");
         uint32_t nGenesisTime = 1651442858;	
 
 	    genesis = CreateGenesisBlock(nGenesisTime, 3244753, 0x1e00ffff, 4, 5000 * COIN);
         consensus.hashGenesisBlock = genesis.GetX16RHash();	
         //std::cout << "hashGenesisBlock " << consensus.hashGenesisBlock.GetHex() << std::endl;
-	    assert(consensus.hashGenesisBlock == uint256S("0000000a50fdaaf22f1c98b8c61559e15ab2269249aa1fb20683180703cdbf07"));
-        assert(genesis.hashMerkleRoot == uint256S("7c1d71731b98c560a80cee3b88993c8c863342b9661894304fd843bf7e75a41f"));
+	    assert(consensus.hashGenesisBlock == uint256S("0x"));
+        assert(genesis.hashMerkleRoot == uint256S("0x"));
 
-        vSeeds.emplace_back("seed.neoxa.net", false);
-	    vSeeds.emplace_back("seed1.neoxa.net", false);
-	    vSeeds.emplace_back("seed2.neoxa.net", false);
+        //todo: Make dnsseeder ourselfs
+        // vSeeds.emplace_back("seed.neoxa.net", false);
+	    // vSeeds.emplace_back("seed1.neoxa.net", false);
+	    // vSeeds.emplace_back("seed2.neoxa.net", false);
 
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,38);
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,122);
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,112);
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 63);  // 'S' for public key addresses
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 125); // 's' for script addresses
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1, 191); // 'S' for secret keys
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
 
         // NEOXA BIP44 cointype in mainnet is '1668'
         nExtCoinType = 1668;
 
-        vector<FounderRewardStructure> rewardStructures = { {620000, 15},// 15%
-                                                            {INT_MAX, 10}// 10% founder/dev fee forever
-                                                            };
+        vector<FounderRewardStructure> rewardStructures = { {INT_MAX, 5} }; // 5% founder/dev fee forever
+                                                            
         consensus.nFounderPayment = FounderPayment(rewardStructures, 1);
         consensus.nSpecialRewardShare = Consensus::SpecialRewardShare(0.8,0.2,0.0);
         consensus.nCollaterals = SmartnodeCollaterals(
           { 
-            {INT_MAX, 1000000 * COIN}
-          },
-          { {622500, 0}, {INT_MAX, 45} }
+            {INT_MAX, 40000 * COIN}
+          }
         );
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
