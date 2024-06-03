@@ -506,7 +506,7 @@ void CTxMemPool::addAddressIndex(const CTxMemPoolEntry &entry, const CCoinsViewC
             mapAddress.insert(std::make_pair(key, delta));
             inserted.push_back(key);
         }else {
-            /** NEOXA START */
+            /** SMARTMEME START */
             if (AreAssetsDeployed()) {
                 uint160 hashBytes;
                 std::string assetName;
@@ -518,7 +518,7 @@ void CTxMemPool::addAddressIndex(const CTxMemPoolEntry &entry, const CCoinsViewC
                     inserted.push_back(key);
                 }
             }
-            /** NEOXA END */
+            /** SMARTMEME END */
         }
     }
 
@@ -542,7 +542,7 @@ void CTxMemPool::addAddressIndex(const CTxMemPoolEntry &entry, const CCoinsViewC
             mapAddress.insert(std::make_pair(key, CMempoolAddressDelta(entry.GetTime(), out.nValue)));
             inserted.push_back(key);
         }else {
-            /** NEOXA START */
+            /** SMARTMEME START */
             if (AreAssetsDeployed()) {
                 uint160 hashBytes;
                 std::string assetName;
@@ -554,7 +554,7 @@ void CTxMemPool::addAddressIndex(const CTxMemPoolEntry &entry, const CCoinsViewC
                     inserted.push_back(key);
                 }
             }
-            /** NEOXA END */
+            /** SMARTMEME END */
         }
     }
 
@@ -731,7 +731,7 @@ void CTxMemPool::removeUnchecked(txiter it, MemPoolRemovalReason reason)
     removeAddressIndex(hash);
     removeSpentIndex(hash);
 
-    /** NEOXA START */
+    /** SMARTMEME START */
     // If the transaction being removed from the mempool is locking other reissues. Free them
     if (mapReissuedTx.count(hash)) {
         if (mapReissuedAssets.count(mapReissuedTx.at(hash))) {
@@ -812,7 +812,7 @@ void CTxMemPool::removeUnchecked(txiter it, MemPoolRemovalReason reason)
             }
         }
     }
-    /** NEOXA END */
+    /** SMARTMEME END */
 }
 
 // Calculates descendants of entry that are not already in setDescendants, and adds to
@@ -1206,7 +1206,7 @@ void CTxMemPool::removeForBlock(const std::vector<CTransactionRef>& vtx, unsigne
             }
         }
     }
-    /** NEOXA END */
+    /** SMARTMEME END */
 
     // Before the txs in the new block have been removed from the mempool, update policy estimates
     if (minerPolicyEstimator) {minerPolicyEstimator->processBlock(nBlockHeight, entries);}

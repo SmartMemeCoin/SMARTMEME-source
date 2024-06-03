@@ -4,8 +4,8 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 
-#ifndef NEOXACOIN_ASSET_PROTOCOL_H
-#define NEOXACOIN_ASSET_PROTOCOL_H
+#ifndef SMARTMEMECOIN_ASSET_PROTOCOL_H
+#define SMARTMEMECOIN_ASSET_PROTOCOL_H
 
 #include "amount.h"
 #include "tinyformat.h"
@@ -469,10 +469,10 @@ bool CheckIssueBurnTx(const CTxOut& txOut, const AssetType& type);
 bool CheckReissueBurnTx(const CTxOut& txOut);
 
 //! issue asset scripts to make sure script meets the standards
-bool CheckIssueDataTx(const CTxOut& txOut); // OP_NEOXA_ASSET NEOXQ (That is a Q as in Que not an O)
-bool CheckOwnerDataTx(const CTxOut& txOut);// OP_NEOXA_ASSET NEOXO
-bool CheckReissueDataTx(const CTxOut& txOut);// OP_NEOXA_ASSET NEOXR
-bool CheckTransferOwnerTx(const CTxOut& txOut);// OP_NEOXA_ASSET NEOXT
+bool CheckIssueDataTx(const CTxOut& txOut); // OP_SMARTMEME_ASSET NEOXQ (That is a Q as in Que not an O)
+bool CheckOwnerDataTx(const CTxOut& txOut);// OP_SMARTMEME_ASSET NEOXO
+bool CheckReissueDataTx(const CTxOut& txOut);// OP_SMARTMEME_ASSET NEOXR
+bool CheckTransferOwnerTx(const CTxOut& txOut);// OP_SMARTMEME_ASSET NEOXT
 
 //! Check the Encoded hash and make sure it is either an IPFS hash or a OIP hash
 bool CheckEncoded(const std::string& hash, std::string& strError);
@@ -585,4 +585,4 @@ bool ContextualCheckReissueAsset(CAssetsCache* assetCache, const CReissueAsset& 
 bool ContextualCheckUniqueAssetTx(CAssetsCache* assetCache, std::string& strError, const CTransaction& tx);
 bool ContextualCheckUniqueAsset(CAssetsCache* assetCache, const CNewAsset& unique_asset, std::string& strError);
 
-#endif //NEOXACOIN_ASSET_PROTOCOL_H
+#endif //SMARTMEMECOIN_ASSET_PROTOCOL_H

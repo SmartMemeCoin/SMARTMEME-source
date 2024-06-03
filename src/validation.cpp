@@ -1595,7 +1595,7 @@ int ApplyTxInUndo(Coin&& undo, CCoinsViewCache& view, const COutPoint& out, CAss
 {
     bool fClean = true;
 
-    /** NEOXA START */
+    /** SMARTMEME START */
     // This is needed because undo, is going to be cleared and moved when AddCoin is called. We need this for undo assets
     Coin tempCoin;
     bool fIsAsset = false;
@@ -1603,7 +1603,7 @@ int ApplyTxInUndo(Coin&& undo, CCoinsViewCache& view, const COutPoint& out, CAss
         fIsAsset = true;
         tempCoin = undo;
     }
-    /** NEOXA END */
+    /** SMARTMEME END */
 
     if (view.HaveCoin(out)) fClean = false; // overwriting transaction output
 
@@ -1625,14 +1625,14 @@ int ApplyTxInUndo(Coin&& undo, CCoinsViewCache& view, const COutPoint& out, CAss
     // it is an overwrite.
     view.AddCoin(out, std::move(undo), !fClean);
 
-    /** NEOXA START */
+    /** SMARTMEME START */
     if (AreAssetsDeployed()) {
         if (assetCache && fIsAsset) {
             if (!assetCache->UndoAssetCoin(tempCoin, out))
                 fClean = false;
         }
     }
-    /** NEOXA END */
+    /** SMARTMEME END */
 
     return fClean ? DISCONNECT_OK : DISCONNECT_UNCLEAN;
 }
@@ -2323,7 +2323,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
     int64_t nTime1 = GetTimeMicros(); nTimeCheck += nTime1 - nTimeStart;
     LogPrint(BCLog::BENCHMARK, "    - Sanity checks: %.2fms [%.2fs]\n", 0.001 * (nTime1 - nTimeStart), nTimeCheck * 0.000001);
 
-    /// NEOXA: Check superblock start
+    /// SMARTMEME: Check superblock start
 
     // make sure old budget is the real one
     if (pindex->nHeight == chainparams.GetConsensus().nSuperblockStartBlock &&
@@ -2332,7 +2332,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
             return state.DoS(100, error("ConnectBlock(): invalid superblock start"),
                              REJECT_INVALID, "bad-sb-start");
 
-    /// END NEOXA
+    /// END SMARTMEME
 
     // Start enforcing BIP68 (sequence locks) and BIP112 (CHECKSEQUENCEVERIFY) using versionbits logic.
     int nLockTimeFlags = 0;
@@ -2589,7 +2589,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
     LogPrint(BCLog::BENCHMARK, "    - Verify %u txins: %.2fms (%.3fms/txin) [%.2fs]\n", nInputs - 1, 0.001 * (nTime4 - nTime2), nInputs <= 1 ? 0 : 0.001 * (nTime4 - nTime2) / (nInputs-1), nTimeVerify * 0.000001);
 
 
-    // NEOXA
+    // SMARTMEME
 
     // It's possible that we simply don't have enough data and this could fail
     // (i.e. block itself could be a correct one and we need to store it),
@@ -2597,7 +2597,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
     // the peer who sent us this block is missing some data and wasn't able
     // to recognize that block is actually invalid.
 
-    // NEOXA : CHECK TRANSACTIONS FOR INSTANTSEND
+    // SMARTMEME : CHECK TRANSACTIONS FOR INSTANTSEND
 
     if (sporkManager.IsSporkActive(SPORK_3_INSTANTSEND_BLOCK_FILTERING)) {
         // Require other nodes to comply, send them some data in case they are missing it.
@@ -2615,18 +2615,18 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
                 // The node which relayed this should switch to correct chain.
                 // TODO: relay instantsend data/proof.
                 LOCK(cs_main);
-                return state.DoS(10, error("ConnectBlock(NEOXA): transaction %s conflicts with transaction lock %s", tx->GetHash().ToString(), conflictLock->txid.ToString()),
+                return state.DoS(10, error("ConnectBlock(SMARTMEME): transaction %s conflicts with transaction lock %s", tx->GetHash().ToString(), conflictLock->txid.ToString()),
                                  REJECT_INVALID, "conflict-tx-lock");
             }
         }
     } else {
-        LogPrintf("ConnectBlock(NEOXA): spork is off, skipping transaction locking checks\n");
+        LogPrintf("ConnectBlock(SMARTMEME): spork is off, skipping transaction locking checks\n");
     }
 
     int64_t nTime5_1 = GetTimeMicros(); nTimeISFilter += nTime5_1 - nTime4;
     LogPrint(BCLog::BENCHMARK, "      - IS filter: %.2fms [%.2fs]\n", 0.001 * (nTime5_1 - nTime4), nTimeISFilter * 0.000001);
 
-    // NEOXA : MODIFIED TO CHECK SMARTNODE PAYMENTS AND SUPERBLOCKS
+    // SMARTMEME : MODIFIED TO CHECK SMARTNODE PAYMENTS AND SUPERBLOCKS
 
     // TODO: resync data (both ways?) and try to reprocess this block later.
     CAmount blockReward = nFees + GetBlockSubsidy(pindex->pprev->nBits, pindex->pprev->nHeight, chainparams.GetConsensus());
@@ -2636,20 +2636,20 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
     LogPrint(BCLog::BENCHMARK, "      - GetBlockSubsidy: %.2fms [%.2fs]\n", 0.001 * (nTime5_2 - nTime5_1), nTimeSubsidy * 0.000001);
 
     if (!IsBlockValueValid(block, pindex->nHeight, (blockReward + specialTxFees), strError)) {
-        return state.DoS(0, error("ConnectBlock(NEOXA): %s", strError), REJECT_INVALID, "bad-cb-amount");
+        return state.DoS(0, error("ConnectBlock(SMARTMEME): %s", strError), REJECT_INVALID, "bad-cb-amount");
     }
 
     int64_t nTime5_3 = GetTimeMicros(); nTimeValueValid += nTime5_3 - nTime5_2;
     LogPrint(BCLog::BENCHMARK, "      - IsBlockValueValid: %.2fms [%.2fs]\n", 0.001 * (nTime5_3 - nTime5_2), nTimeValueValid * 0.000001);
     if (!IsBlockPayeeValid(*block.vtx[0], pindex->nHeight, blockReward, specialTxFees)) {
-        return state.DoS(0, error("ConnectBlock(NEOXA): couldn't find smartnode or superblock payments"),
+        return state.DoS(0, error("ConnectBlock(SMARTMEME): couldn't find smartnode or superblock payments"),
                                 REJECT_INVALID, "bad-cb-payee");
     }
 
     int64_t nTime5_4 = GetTimeMicros(); nTimePayeeValid += nTime5_4 - nTime5_3;
     LogPrint(BCLog::BENCHMARK, "      - IsBlockPayeeValid: %.2fms [%.2fs]\n", 0.001 * (nTime5_4 - nTime5_3), nTimePayeeValid * 0.000001);
     if (!ProcessSpecialTxsInBlock(block, pindex, state, fJustCheck, fScriptChecks)) {
-        return error("ConnectBlock(NEOXA): ProcessSpecialTxsInBlock for block %s failed with %s",
+        return error("ConnectBlock(SMARTMEME): ProcessSpecialTxsInBlock for block %s failed with %s",
                      pindex->GetBlockHash().ToString(), FormatStateMessage(state));
     }
 
@@ -2659,7 +2659,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
     int64_t nTime5 = GetTimeMicros(); nTimeNeoxaSpecific += nTime5 - nTime4;
     LogPrint(BCLog::BENCHMARK, "    - Neoxa specific: %.2fms [%.2fs]\n", 0.001 * (nTime5 - nTime4), nTimeNeoxaSpecific * 0.000001);
 
-    // END NEOXA
+    // END SMARTMEME
 
     if (fJustCheck)
         return true;
@@ -3158,21 +3158,21 @@ bool static ConnectTip(CValidationState& state, const CChainParams& chainparams,
     int64_t nTime3;
     LogPrint(BCLog::BENCHMARK, "  - Load block from disk: %.2fms [%.2fs]\n", (nTime2 - nTime1) * 0.001, nTimeReadFromDisk * 0.000001);
     
-    /** NEOXA ASSETS START */
+    /** SMARTMEME ASSETS START */
     // Initialize sets used from removing asset entries from the mempool
     ConnectedBlockAssetData assetDataFromBlock;
-    /** NEOXA ASSETS END */
+    /** SMARTMEME ASSETS END */
 
     {
         auto dbTx = evoDb->BeginTransaction();
 
         CCoinsViewCache view(pcoinsTip);
-        /** NEOXA ASSETS START */
+        /** SMARTMEME ASSETS START */
         // Create the empty asset cache, that will be sent into the connect block
         // All new data will be added to the cache, and will be flushed back into passets after a successful
         // Connect Block cycle
         CAssetsCache assetCache;
-        /** NEOXA ASSETS END */
+        /** SMARTMEME ASSETS END */
 
         bool rv = ConnectBlock(blockConnecting, state, pindexNew, view, chainparams, &assetCache);
         GetMainSignals().BlockChecked(blockConnecting, state);
@@ -3182,7 +3182,7 @@ bool static ConnectTip(CValidationState& state, const CChainParams& chainparams,
             return error("ConnectTip(): ConnectBlock %s failed with %s", pindexNew->GetBlockHash().ToString(), FormatStateMessage(state));
         }
         
-        /** NEOXA ASSETS START */
+        /** SMARTMEME ASSETS START */
         // Get the newly created assets, from the connectblock assetCache so we can remove the correct assets from the mempool
         assetDataFromBlock = {assetCache.setNewAssetsToAdd};
 
@@ -3195,17 +3195,17 @@ bool static ConnectTip(CValidationState& state, const CChainParams& chainparams,
                 mapReissuedTx.erase(txHash);
             }
         }
-        /** NEOXA ASSETS END */
+        /** SMARTMEME ASSETS END */
         nTime3 = GetTimeMicros(); nTimeConnectTotal += nTime3 - nTime2;
         LogPrint(BCLog::BENCHMARK, "  - Connect total: %.2fms [%.2fs]\n", (nTime3 - nTime2) * 0.001, nTimeConnectTotal * 0.000001);
         bool flushed = view.Flush();
         assert(flushed);
         dbTx->Commit();
 
-        /** NEOXA ASSETS START */
+        /** SMARTMEME ASSETS START */
         bool assetFlushed = assetCache.Flush();
         assert(assetFlushed);
-        /** NEOXA ASSETS END */
+        /** SMARTMEME ASSETS END */
     }
     int64_t nTime4 = GetTimeMicros(); nTimeFlush += nTime4 - nTime3;
     LogPrint(BCLog::BENCHMARK, "  - Flush: %.2fms [%.2fs]\n", (nTime4 - nTime3) * 0.001, nTimeFlush * 0.000001);

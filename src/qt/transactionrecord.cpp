@@ -265,7 +265,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
             // Mixed debit transaction, can't break down payees
             //
             
-            /** NEOXA START */
+            /** SMARTMEME START */
             // We will only show mixed debit transactions that are nNet < 0 or if they are nNet == 0 and
             // they do not contain assets. This is so the list of transaction doesn't add 0 amount transactions to the
             // list.
@@ -285,7 +285,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                 parts.append(TransactionRecord(hash, nTime, TransactionRecord::Other, "", nNet, 0));
                 parts.last().involvesWatchAddress = involvesWatchAddress;
             }
-            /** NEOXA START */
+            /** SMARTMEME START */
         }
     }
 

@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NEOXA_CRYPTO_BLS_H
-#define NEOXA_CRYPTO_BLS_H
+#ifndef SMARTMEME_CRYPTO_BLS_H
+#define SMARTMEME_CRYPTO_BLS_H
 
 #include "hash.h"
 #include "serialize.h"
@@ -476,4 +476,4 @@ typedef std::shared_ptr<BLSSignatureVector> BLSSignatureVectorPtr;
 
 bool BLSInit();
 
-#endif // NEOXA_CRYPTO_BLS_H
+#endif // SMARTMEME_CRYPTO_BLS_H

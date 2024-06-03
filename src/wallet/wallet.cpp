@@ -4118,7 +4118,7 @@ bool CWallet::CreateNewChangeAddress(CReserveKey& reservekey, CKeyID& keyID, std
     return true;
 }
 
-/** NEOXA assets*/
+/** SMARTMEME assets*/
 bool CWallet::CreateTransactionWithAssets(const std::vector<CRecipient>& vecSend, CWalletTx& wtxNew, CReserveKey& reservekey, CAmount& nFeeRet, int& nChangePosInOut,
                                std::string& strFailReason, const CCoinControl& coin_control, const std::vector<CNewAsset> assets, const CTxDestination destination, const AssetType& type, bool sign)
 {
@@ -4758,7 +4758,7 @@ bool CWallet::CreateTransactionAll(const std::vector<CRecipient>& vecSend, CWall
     return true;
 }
 
-/** NEOXA assets end*/
+/** SMARTMEME assets end*/
 
 
 bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletTx& wtxNew, CReserveKey& reservekey, CAmount& nFeeRet,

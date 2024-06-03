@@ -1,4 +1,4 @@
-# TOR SUPPORT IN NEOXA CORE
+# TOR SUPPORT IN SMARTMEME CORE
 =======================
 
 It is possible to run Neoxa Core as a Tor hidden service, and connect to such services.

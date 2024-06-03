@@ -458,7 +458,7 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
 
-        // NEOXA BIP44 cointype in mainnet is '1668'
+        // SMARTMEME BIP44 cointype in mainnet is '1668'
         nExtCoinType = 1668;
 
         vector<FounderRewardStructure> rewardStructures = { {INT_MAX, 5} }; // 5% founder/dev fee forever
@@ -711,7 +711,7 @@ public:
            // 0.01518114964117619        // * estimated number of transactions per second after that timestamp
         };
 
-        /** NEOXA Start **/
+        /** SMARTMEME Start **/
         // Burn Amounts
         nIssueAssetBurnAmount = 500 * COIN;
         nReissueAssetBurnAmount = 100 * COIN;
@@ -742,7 +742,7 @@ public:
         nAssetActivationHeight = 1; // Asset activated block height
         nMessagingActivationBlock = 1; // Messaging activated block height
         nRestrictedActivationBlock = 1; // Restricted activated block height
-        /** NEOXA End **/
+        /** SMARTMEME End **/
     }
 };
 

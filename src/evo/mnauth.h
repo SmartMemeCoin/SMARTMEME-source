@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NEOXA_MNAUTH_H
-#define NEOXA_MNAUTH_H
+#ifndef SMARTMEME_MNAUTH_H
+#define SMARTMEME_MNAUTH_H
 
 #include "bls/bls.h"
 #include "serialize.h"
@@ -56,4 +56,4 @@ public:
 };
 
 
-#endif //NEOXA_MNAUTH_H
+#endif //SMARTMEME_MNAUTH_H

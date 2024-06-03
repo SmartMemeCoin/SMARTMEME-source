@@ -204,7 +204,7 @@ struct COutputEntry
     int vout;
 };
 
-/** NEOXA ASSETS START */
+/** SMARTMEME ASSETS START */
 struct CAssetOutputEntry
 {
     txnouttype type;
@@ -215,7 +215,7 @@ struct CAssetOutputEntry
     int64_t expireTime;
     int vout;
 };
-/** NEOXA ASSETS END */
+/** SMARTMEME ASSETS END */
 
 /** A transaction with a merkle branch linking it to the block chain. */
 class CMerkleTx

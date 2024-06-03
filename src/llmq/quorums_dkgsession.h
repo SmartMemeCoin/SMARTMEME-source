@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NEOXA_QUORUMS_DKGSESSION_H
-#define NEOXA_QUORUMS_DKGSESSION_H
+#ifndef SMARTMEME_QUORUMS_DKGSESSION_H
+#define SMARTMEME_QUORUMS_DKGSESSION_H
 
 #include "consensus/params.h"
 #include "net.h"
@@ -343,4 +343,4 @@ void SetSimulatedDKGErrorRate(const std::string& type, double rate);
 
 } // namespace llmq
 
-#endif //NEOXA_QUORUMS_DKGSESSION_H
+#endif //SMARTMEME_QUORUMS_DKGSESSION_H

@@ -143,7 +143,7 @@ isminetype IsMine(const CKeyStore &keystore, const CScript& scriptPubKey, bool& 
                 return ISMINE_SPENDABLE;
             break;
         }
-            /** NEOXA START */
+            /** SMARTMEME START */
         case TX_NEW_ASSET: {
             if (!AreAssetsDeployed())
                 return ISMINE_NO;

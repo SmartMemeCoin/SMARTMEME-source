@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NEOXA_QUORUMS_SIGNING_SHARES_H
-#define NEOXA_QUORUMS_SIGNING_SHARES_H
+#ifndef SMARTMEME_QUORUMS_SIGNING_SHARES_H
+#define SMARTMEME_QUORUMS_SIGNING_SHARES_H
 
 #include "bls/bls.h"
 #include "chainparams.h"
@@ -427,4 +427,4 @@ extern CSigSharesManager* quorumSigSharesManager;
 
 } // namespace llmq
 
-#endif //NEOXA_QUORUMS_SIGNING_SHARES_H
+#endif //SMARTMEME_QUORUMS_SIGNING_SHARES_H

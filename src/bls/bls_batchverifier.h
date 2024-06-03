@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NEOXA_CRYPTO_BLS_BATCHVERIFIER_H
-#define NEOXA_CRYPTO_BLS_BATCHVERIFIER_H
+#ifndef SMARTMEME_CRYPTO_BLS_BATCHVERIFIER_H
+#define SMARTMEME_CRYPTO_BLS_BATCHVERIFIER_H
 
 #include "bls.h"
 
@@ -233,4 +233,4 @@ private:
     }
 };
 
-#endif //NEOXA_CRYPTO_BLS_BATCHVERIFIER_H
+#endif //SMARTMEME_CRYPTO_BLS_BATCHVERIFIER_H

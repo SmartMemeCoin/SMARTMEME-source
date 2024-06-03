@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NEOXA_EVODB_H
-#define NEOXA_EVODB_H
+#ifndef SMARTMEME_EVODB_H
+#define SMARTMEME_EVODB_H
 
 #include "dbwrapper.h"
 #include "sync.h"
@@ -109,4 +109,4 @@ private:
 
 extern CEvoDB* evoDb;
 
-#endif //NEOXA_EVODB_H
+#endif //SMARTMEME_EVODB_H

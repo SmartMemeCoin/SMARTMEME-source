@@ -77,7 +77,7 @@ static const std::regex QUALIFIER_INDICATOR("^[#][A-Z0-9._]{3,}$"); // Starts wi
 static const std::regex SUB_QUALIFIER_INDICATOR("^#[A-Z0-9._]+\\/#[A-Z0-9._]+$"); // Starts with #
 static const std::regex RESTRICTED_INDICATOR("^[\\$][A-Z0-9._]{3,}$"); // Starts with $
 
-static const std::regex NEOXA_NAMES("^RVN$|^RAVEN$|^RAVENCOIN$|^#RVN$|^#RAVEN$|^#RAVENCOIN$|^NEOX$|^NEOX$|^NEOXA$|^NEOXACOIN$|^#NEOX$|^#NEOXA$|^#NEOXACOIN$");
+static const std::regex SMARTMEME_NAMES("^RVN$|^RAVEN$|^RAVENCOIN$|^#RVN$|^#RAVEN$|^#RAVENCOIN$|^NEOX$|^NEOX$|^SMARTMEME$|^SMARTMEMECOIN$|^#NEOX$|^#SMARTMEME$|^#SMARTMEMECOIN$");
 
 bool IsRootNameValid(const std::string& name)
 {
@@ -85,7 +85,7 @@ bool IsRootNameValid(const std::string& name)
         && !std::regex_match(name, DOUBLE_PUNCTUATION)
         && !std::regex_match(name, LEADING_PUNCTUATION)
         && !std::regex_match(name, TRAILING_PUNCTUATION)
-        && !std::regex_match(name, NEOXA_NAMES);
+        && !std::regex_match(name, SMARTMEME_NAMES);
 }
 
 bool IsQualifierNameValid(const std::string& name)
@@ -94,7 +94,7 @@ bool IsQualifierNameValid(const std::string& name)
            && !std::regex_match(name, DOUBLE_PUNCTUATION)
            && !std::regex_match(name, QUALIFIER_LEADING_PUNCTUATION)
            && !std::regex_match(name, TRAILING_PUNCTUATION)
-           && !std::regex_match(name, NEOXA_NAMES);
+           && !std::regex_match(name, SMARTMEME_NAMES);
 }
 
 bool IsRestrictedNameValid(const std::string& name)
@@ -103,7 +103,7 @@ bool IsRestrictedNameValid(const std::string& name)
            && !std::regex_match(name, DOUBLE_PUNCTUATION)
            && !std::regex_match(name, LEADING_PUNCTUATION)
            && !std::regex_match(name, TRAILING_PUNCTUATION)
-           && !std::regex_match(name, NEOXA_NAMES);
+           && !std::regex_match(name, SMARTMEME_NAMES);
 }
 
 bool IsSubQualifierNameValid(const std::string& name)
