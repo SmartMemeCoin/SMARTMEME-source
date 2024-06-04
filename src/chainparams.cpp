@@ -439,70 +439,13 @@ public:
         nPruneAfterHeight = 100000;
         //FindMainNetGenesisBlock(1717416548, 0x20001fff, "main");
         uint32_t nGenesisTime = 1717416548;	
-
-        // arith_uint256 test;
-        // bool fNegative;    
-        // bool fOverflow;
-        // test.SetCompact(0x1e00ffff, &fNegative, &fOverflow);
-        // std::cout << "Test threshold: " << test.GetHex() << "\n\n";
-
-        // int genesisNonce = 0;
-        // uint256 TempHashHolding = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000");
-        // uint256 BestBlockHash = uint256S("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        // for (int i=0;i<40000000;i++) {
-        //     genesis = CreateGenesisBlock(nGenesisTime, i, 0x1e00ffff, 4, 5000 * COIN);
-        //     genesis.hashPrevBlock = TempHashHolding;
-		// 	// Depending on when the timestamp is on the genesis block. You will need to use GetX16RHash or GetX16RV2Hash. Replace GetHash() with these below
-        //     consensus.hashGenesisBlock = genesis.GetX16RHash();
-
-        //     arith_uint256 BestBlockHashArith = UintToArith256(BestBlockHash);
-        //     if (UintToArith256(consensus.hashGenesisBlock) < BestBlockHashArith) {
-        //         BestBlockHash = consensus.hashGenesisBlock;
-        //         std::cout << "CHOOSE: consensus.hashGenesisBlock.GetHex(): " << consensus.hashGenesisBlock.GetHex() << " Nonce: " << i << " nGenesisTime: " << nGenesisTime << "\n";
-        //         std::cout << "CHOOSE: BestBlockHash.GetHex(): " << BestBlockHash.GetHex() << " Nonce: " << i << " nGenesisTime: " << nGenesisTime << "\n";
-        //         std::cout << "CHOOSE: genesis.GetX16RHash().GetHex(): " << genesis.GetX16RHash().GetHex() << " Nonce: " << i << " nGenesisTime: " << nGenesisTime << "\n";
-        //         std::cout << "CHOOSE: PrevBlockHash: " << genesis.hashPrevBlock.GetHex() << "\n";
-        //     }
-
-        //     //TempHashHolding = consensus.hashGenesisBlock;
-
-        //     if (BestBlockHashArith < test) {
-        //         genesisNonce = i - 1;
-        //         break;
-        //     }
-        //     std::cout << "	 consensus.hashGenesisBlock.GetHex(): " << consensus.hashGenesisBlock.GetHex() << " Nonce: " << i << "\n";
-        // }
-        // std::cout << "\n";
-        // std::cout << "\n";
-        // std::cout << "\n";
-
-        // std::cout << "BestBlockHash.GetHex() to 0x" << BestBlockHash.GetHex() << std::endl;
-        // std::cout << "genesis.GetX16RHash().GetHex() to 0x" << genesis.GetX16RHash().GetHex() << std::endl;
-        // std::cout << "Genesis Nonce to " << genesisNonce << std::endl;
-        // std::cout << "Genesis Merkle " << genesis.hashMerkleRoot.GetHex() << std::endl;
-
-        // std::cout << "\n";
-        // std::cout << "\n";
-        // int totalHits = 0;
-        // double totalTime = 0.0;
-
-        // for(int x = 0; x < 16; x++) {
-        //     totalHits += algoHashHits[x];
-        //     totalTime += algoHashTotal[x];
-        //     std::cout << "hash algo " << x << " hits " << algoHashHits[x] << " total " << algoHashTotal[x] << " avg " << algoHashTotal[x]/algoHashHits[x] << std::endl;
-        // }
-
-        // std::cout << "Totals: hash algo " <<  " hits " << totalHits << " total " << totalTime << " avg " << totalTime/totalHits << std::endl;
-
-        // genesis.hashPrevBlock = TempHashHolding;
-
-        // return;
-
-
-	    genesis = CreateGenesisBlock(nGenesisTime, 11366442, 0x1e00ffff, 4, 5000 * COIN);
-        consensus.hashGenesisBlock = genesis.GetX16RHash();	
+        
+	    genesis = CreateGenesisBlock(nGenesisTime, 757, 0x20001fff, 4, 5000 * COIN);
+        uint256 mix_hash;
+        consensus.hashGenesisBlock = genesis.GetHashFull(mix_hash);
+        genesis.mix_hash = mix_hash;
         //std::cout << "hashGenesisBlock " << consensus.hashGenesisBlock.GetHex() << std::endl;
-	    assert(consensus.hashGenesisBlock == uint256S("0x000000264ad84918946b8c1319ea7042f36bd6808799104c02ff2511429ba19d"));
+	    assert(consensus.hashGenesisBlock == uint256S("001ee46cf930ad8cddd5c020a626e18dd9e8f7a73f43a52a41607dee12279200"));
         assert(genesis.hashMerkleRoot == uint256S("7c5152cafed4f81ec1c3e2758ee5aeda41a30a93883da3df24b255307454d819"));
 
         //todo: Make dnsseeder ourselfs
@@ -511,11 +454,11 @@ public:
 	    // vSeeds.emplace_back("seed2.smartmeme.net", false);
 
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 63);  // 'S' for public key addresses
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 125); // 's' for script addresses
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1, 191); // 'S' for secret keys
-        base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
-        base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,63);  // 'S' for public key addresses
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,125); // 's' for script addresses
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,191); // 'S' for secret keys
+        base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x8D, 0xF2, 0x1E};
+        base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x89, 0xA6, 0xE4};
 
         // SMARTMEME BIP44 cointype in mainnet is '662'
         nExtCoinType = 662;
@@ -551,7 +494,7 @@ public:
         nPoolMaxParticipants = 5;
         nFulfilledRequestExpireTime = 60*60; // fulfilled requests expire in 1 hour
 
-        vSporkAddresses = {"GdJwLvyP6jgJxtA2MEdonzcC9dj8XLsurZ"};
+        vSporkAddresses = {"SkdELzozGzR3c6dWM1Rw7hZWyodohMU3Nq"};
         nMinSporkKeys = 1;
         fBIP9CheckSmartnodesUpgraded = true;
 
@@ -581,19 +524,19 @@ public:
         nAddNullQualifierTagBurnAmount = .1 * COIN;
 
         // Burn Addresses
-	    strIssueAssetBurnAddress = "GcmKXqWrFrbDnywuY8F3orEnNR5L1g2mZQ";
-        strReissueAssetBurnAddress = "GX61EFYjZdXKWAY5UsBt5sLxHkWaqjBL59";
-        strIssueSubAssetBurnAddress = "GNgg3bLoGocLD9iU2W1gw3McHipzfZ8R13";
-        strIssueUniqueAssetBurnAddress = "GKXyGTyzibPLhPpTpvqqBK3SJBz8gp7Kfa";
-        strIssueMsgChannelAssetBurnAddress = "GMm13zRL8eGjZxYXfiCN1zCJFHiL5HkMYa";
-        strIssueQualifierAssetBurnAddress = "GZW36RFFgRWcCQ3cN1qWJGC6z4EAqgt7M6";
-        strIssueSubQualifierAssetBurnAddress = "GcDdxyK7JCuQfg83SxFHRpD8QHFivbdYjZ";
-        strIssueRestrictedAssetBurnAddress = "GcDdxyK7JCuQfg83SxFHRpD8QHFivbdYjZ";
-        strAddNullQualifierTagBurnAddress = "GTfS34Z3CrzXSPEmGx9xpjw7PShUC93YFi";
+	    strIssueAssetBurnAddress = "Sa47oiVLahLgPjcCmHLjdS6cLJ5fHGfV4L";
+        strReissueAssetBurnAddress = "SMgRCP2PqhU3Ko2zLcJE9NnTapCgMjrXJS";
+        strIssueSubAssetBurnAddress = "SMgRCP2PqhU3Ko2zLcJE9NnTapCgMjrXJS";
+        strIssueUniqueAssetBurnAddress = "SYzkPbmukhYsYqACqjX7gXUNk6Wek61sGb";
+        strIssueMsgChannelAssetBurnAddress = "SgZFLpKEWpZ1QuweKbFBUzPzCDtMUwqnRN";
+        strIssueQualifierAssetBurnAddress = "SiXvEzGsZdMVv7Zp6bZsc4aLVesSNeQPEY";
+        strIssueSubQualifierAssetBurnAddress = "SdVbRbK1kmZCAY3GgccbE99Td9rBpbgQ2y";
+        strIssueRestrictedAssetBurnAddress = "ShqbxESwdb8SKohseAw6BQe5vXGaWrr1Mm";
+        strAddNullQualifierTagBurnAddress = "SWgR6UN9iyTz4vPgkdPVGtvqZniszc54P1";
         //Global Burn Address
-        strGlobalBurnAddress = "GeNvn7GXr1aLqhDx9HG9aYWnPA5qoRsz9X";
+        strGlobalBurnAddress = "SbDZK5S6oSqvDFuHqS8PstCxJ4yCneHBym";
         // ProofOfGame Address
-        strCommunityAutonomousAddress = "GTbBCJzqRWyFBMrap2fY39eZaXnLnojJ3F";
+        strCommunityAutonomousAddress = "SYVtMPLdh3iHnk4p46Q6XBG2PVQuqFkbet";
 
         nAssetActivationHeight = 1; // Asset activated block height
         nMessagingActivationBlock = 1; // Messaging activated block height
