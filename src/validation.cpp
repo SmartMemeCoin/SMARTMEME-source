@@ -1187,33 +1187,34 @@ NOTE:   unlike bitcoin we are using PREVIOUS block height here,
 */
 CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params& consensusParams, bool fSuperblockPartOnly)
 {
-    double dDiff;
-    CAmount nSubsidyBase;
+    double nSubsidyBase;
 
     if (nPrevHeight == 0) {
         nSubsidyBase = 5000000;
-    } else if (nPrevHeight <= 5 ) {
-        nSubsidyBase = 525;
-    } else if (nPrevHeight <= 10) {
-        nSubsidyBase = 262.5;
-    } else if (nPrevHeight <= 15) {
-        nSubsidyBase = 131.25;
-    } else if (nPrevHeight <= 20) {
-        nSubsidyBase = 65.625;
-    } else if (nPrevHeight <= 25) {
-        nSubsidyBase = 32.8125;
-    } else if (nPrevHeight <= 30) {
-        nSubsidyBase = 16.4025;
-    } else if (nPrevHeight <= 40) {
-        nSubsidyBase = 8.203125;
-    } else if (nPrevHeight <= 45) {
-        nSubsidyBase = 4.1015625;
-    } else if (nPrevHeight <= 50) {
-        nSubsidyBase = 2.05078125;
+    } else if (nPrevHeight <= 26000 ) {
+        nSubsidyBase = 200;
+    } else if (nPrevHeight <= 52000) {
+        nSubsidyBase = 100;
+    } else if (nPrevHeight <= 78000) {
+        nSubsidyBase = 50;
+    } else if (nPrevHeight <= 104000) {
+        nSubsidyBase = 25;
+    } else if (nPrevHeight <= 130000) {
+        nSubsidyBase = 12.5;
+    } else if (nPrevHeight <= 156000) {
+        nSubsidyBase = 6.25;
+    } else if (nPrevHeight <= 182000) {
+        nSubsidyBase = 3.125;
+    } else if (nPrevHeight <= 208000) {
+        nSubsidyBase = 1.5625;
+    } else if (nPrevHeight <= 234000) {
+        nSubsidyBase = 0.78125;
     } else {
 	    nSubsidyBase = 0.4;
     }
     CAmount nSubsidy = nSubsidyBase * COIN;
+
+    return nSubsidy;
 }
 
 CAmount GetSmartnodePayment(int nHeight, CAmount blockValue, CAmount specialTxFees)
