@@ -13,7 +13,7 @@
  * for both smartmemed and smartmeme-qt, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
-const std::string CLIENT_NAME("Neoxa Core");
+const std::string CLIENT_NAME("Smartmeme Core");
 
 /**
  * Client version number

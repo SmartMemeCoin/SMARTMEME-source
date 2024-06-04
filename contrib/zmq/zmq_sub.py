@@ -6,7 +6,7 @@
 """
     ZMQ example using python3's asyncio
 
-    Neoxa should be started with the command line arguments:
+    Smartmeme should be started with the command line arguments:
         smartmemed -testnet -daemon \
                 -zmqpubrawtx=tcp://127.0.0.1:28332 \
                 -zmqpubrawblock=tcp://127.0.0.1:28332 \

@@ -38,19 +38,19 @@ Next, follow the instructions in [build-generic](build-generic.md)
 Running
 -------
 
-Neoxa Core is now available at `./src/smartmemed`
+Smartmeme Core is now available at `./src/smartmemed`
 
 Before running, it's recommended you create an RPC configuration file.
 
-    echo -e "rpcuser=smartmemerpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/NeoxaCore/smartmeme.conf"
+    echo -e "rpcuser=smartmemerpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/SmartmemeCore/smartmeme.conf"
 
-    chmod 600 "/Users/${USER}/Library/Application Support/NeoxaCore/smartmeme.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/SmartmemeCore/smartmeme.conf"
 
 The first time you run smartmemed, it will start downloading the blockchain. This process could take several hours.
 
 You can monitor the download process by looking at the debug.log file:
 
-    tail -f $HOME/Library/Application\ Support/NeoxaCore/debug.log
+    tail -f $HOME/Library/Application\ Support/SmartmemeCore/debug.log
 
 Other commands:
 -------

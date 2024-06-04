@@ -68,9 +68,9 @@ can then be controlled by group membership.
 ### Mac OS X
 
 Binary:              `/usr/local/bin/smartmemed`  
-Configuration file:  `~/Library/Application Support/NeoxaCore/smartmeme.conf`  
-Data directory:      `~/Library/Application Support/NeoxaCore`
-Lock file:           `~/Library/Application Support/NeoxaCore/.lock`
+Configuration file:  `~/Library/Application Support/SmartmemeCore/smartmeme.conf`  
+Data directory:      `~/Library/Application Support/SmartmemeCore`
+Lock file:           `~/Library/Application Support/SmartmemeCore/.lock`
 
 Installing Service Configuration
 -----------------------------------

@@ -1,5 +1,5 @@
 // Copyright (c) 2017-2019 The Dash Core developers
-// Copyright (c) 2020 The Neoxa developers
+// Copyright (c) 2020 The Smartmeme developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 

@@ -137,7 +137,7 @@ public:
 };
 
 /**
- * Neoxa RPC command dispatcher.
+ * Smartmeme RPC command dispatcher.
  */
 class CRPCTable
 {

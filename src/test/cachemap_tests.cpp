@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2019 The Dash Core developers
-// Copyright (c) 2020 The Neoxa developers
+// Copyright (c) 2020 The Smartmeme developers
 
 #include "cachemap.h"
 

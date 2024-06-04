@@ -7,7 +7,7 @@ architectures:
 packages:
 - "faketime"
 remotes:
-- "url": "https://github.com/The-Neoxa-Endeavor/smartmeme-detached-sigs.git"
+- "url": "https://github.com/The-Smartmeme-Endeavor/smartmeme-detached-sigs.git"
   "dir": "signature"
 files:
 - "smartmemecore-osx-unsigned.tar.gz"

@@ -27,17 +27,17 @@ Build-Depends: debhelper,
  libzmq3-dev
 Standards-Version: 3.9.2
 Homepage: https://www.smartmeme.org/
-Vcs-Git: git://github.com/The-Neoxa-Endeavor/smartmeme.git
-Vcs-Browser: https://github.com/The-Neoxa-Endeavor/smartmeme
+Vcs-Git: git://github.com/The-Smartmeme-Endeavor/smartmeme.git
+Vcs-Browser: https://github.com/The-Smartmeme-Endeavor/smartmeme
 
 Package: smartmemed
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - daemon
- Neoxa is an experimental new digital currency that enables instant, private
- payments to anyone, anywhere in the world. Neoxa uses peer-to-peer
+ Smartmeme is an experimental new digital currency that enables instant, private
+ payments to anyone, anywhere in the world. Smartmeme uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. Neoxa Core
+ and issuing money are carried out collectively by the network. Smartmeme Core
  is the name of the open source software which enables the use of this currency.
  .
  This package provides the daemon, smartmemed, and the CLI tool
@@ -47,22 +47,22 @@ Package: smartmeme-qt
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - Qt GUI
- Neoxa is an experimental new digital currency that enables instant, private
- payments to anyone, anywhere in the world. Neoxa uses peer-to-peer
+ Smartmeme is an experimental new digital currency that enables instant, private
+ payments to anyone, anywhere in the world. Smartmeme uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. Neoxa Core
+ and issuing money are carried out collectively by the network. Smartmeme Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides Neoxa-Qt, a GUI for Neoxa based on Qt.
+ This package provides Smartmeme-Qt, a GUI for Smartmeme based on Qt.
 
 Package: smartmeme-tx
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer digital currency - standalone transaction tool
- Neoxa is an experimental new digital currency that enables instant, private
- payments to anyone, anywhere in the world. Neoxa uses peer-to-peer
+ Smartmeme is an experimental new digital currency that enables instant, private
+ payments to anyone, anywhere in the world. Smartmeme uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. Neoxa Core
+ and issuing money are carried out collectively by the network. Smartmeme Core
  is the name of the open source software which enables the use of this currency.
  .
  This package provides smartmeme-tx, a command-line transaction creation

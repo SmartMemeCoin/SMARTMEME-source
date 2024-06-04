@@ -29,7 +29,7 @@ class QUrl;
 class QWidget;
 QT_END_NAMESPACE
 
-/** Utility functions used by the Neoxa Qt UI.
+/** Utility functions used by the Smartmeme Qt UI.
  */
 namespace GUIUtil
 {

@@ -1,11 +1,11 @@
-Neoxa Core
+Smartmeme Core
 ==========
 
-This is the official reference wallet for Neoxa digital currency and comprises the backbone of the Neoxa peer-to-peer network. You can [download Neoxa Core](https://www.smartmeme.org/downloads/) or [build it yourself](#building) using the guides below.
+This is the official reference wallet for Smartmeme digital currency and comprises the backbone of the Smartmeme peer-to-peer network. You can [download Smartmeme Core](https://www.smartmeme.org/downloads/) or [build it yourself](#building) using the guides below.
 
 Running
 ---------------------
-The following are some helpful notes on how to run Neoxa on your native platform.
+The following are some helpful notes on how to run Smartmeme on your native platform.
 
 ### Unix
 
@@ -20,11 +20,11 @@ Unpack the files into a directory, and then run smartmeme-qt.exe.
 
 ### OS X
 
-Drag Neoxa-Qt to your applications folder, and then run Neoxa-Qt.
+Drag Smartmeme-Qt to your applications folder, and then run Smartmeme-Qt.
 
 Building
 ---------------------
-The following are developer notes on how to build Neoxa Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build Smartmeme Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
 - [OS X Build Notes](build-osx.md)
 - [Unix Build Notes](build-unix.md)
@@ -34,7 +34,7 @@ The following are developer notes on how to build Neoxa Core on your native plat
 
 Development
 ---------------------
-The Neoxa Core repo's [root README](/README.md) contains relevant information on the development process and automated testing.
+The Smartmeme Core repo's [root README](/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
 - [Release Notes](release-notes.md)

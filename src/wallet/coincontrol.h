@@ -132,7 +132,7 @@ public:
         vOutpoints.assign(setAssetsSelected.begin(), setAssetsSelected.end());
     }
 
-    // Neoxa-specific helpers
+    // Smartmeme-specific helpers
 
     void UsePrivateSend(bool fUsePrivateSend)
     {

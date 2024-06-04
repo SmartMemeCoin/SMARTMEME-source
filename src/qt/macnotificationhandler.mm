@@ -13,7 +13,7 @@
 - (NSString *)__bundleIdentifier
 {
     if (self == [NSBundle mainBundle]) {
-        return @"org.smartmeme.Neoxa-Qt";
+        return @"org.smartmeme.Smartmeme-Qt";
     } else {
         return [self __bundleIdentifier];
     }

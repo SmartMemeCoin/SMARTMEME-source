@@ -4,7 +4,7 @@
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 export LC_ALL=C
-if ! [[ "$2" =~ ^(git@)?(www.)?github.com(:|/)The-Neoxa-Endeavor/smartmeme(.git)?$ ]]; then
+if ! [[ "$2" =~ ^(git@)?(www.)?github.com(:|/)The-Smartmeme-Endeavor/smartmeme(.git)?$ ]]; then
     exit 0
 fi
 

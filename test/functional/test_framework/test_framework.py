@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Copyright (c) 2014-2016 The Bitcoin Core developers
 # Copyright (c) 2014-2021 The Dash Core developers
-# Copyright (c) 2022 The Neoxa Endeavor developers
+# Copyright (c) 2022 The Smartmeme Endeavor developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Base class for RPC testing."""
@@ -521,7 +521,7 @@ class SmartnodeInfo:
         self.collateral_vout = collateral_vout
 
 
-class NeoxaTestFramework(BitcoinTestFramework):
+class SmartmemeTestFramework(BitcoinTestFramework):
     def set_smartmeme_test_params(self, num_nodes, masterodes_count, extra_args=None, fast_dip3_enforcement=False):
         self.mn_count = masterodes_count
         self.num_nodes = num_nodes

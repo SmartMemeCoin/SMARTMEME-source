@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2019 The Dash Core developers
-// Copyright (c) 2020 The Neoxa developers
+// Copyright (c) 2020 The Smartmeme developers
 // Distributed under the MIT software license, see the accompanying
 #ifndef SMARTMEME_HDCHAIN_H
 #define SMARTMEME_HDCHAIN_H

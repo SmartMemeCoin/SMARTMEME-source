@@ -9,7 +9,7 @@
 #define UNUSED
 #endif
 static const char UNUSED *smartmeme_strings[] = {
-QT_TRANSLATE_NOOP("smartmeme-core", "Neoxa Core"),
+QT_TRANSLATE_NOOP("smartmeme-core", "Smartmeme Core"),
 QT_TRANSLATE_NOOP("smartmeme-core", "The %s developers"),
 QT_TRANSLATE_NOOP("smartmeme-core", ""
 "%s file contains all private keys from this wallet. Do not share it with "
@@ -60,7 +60,7 @@ QT_TRANSLATE_NOOP("smartmeme-core", ""
 "Delete all wallet transactions and only recover those parts of the "
 "blockchain through -rescan on startup"),
 QT_TRANSLATE_NOOP("smartmeme-core", ""
-"Disable all Neoxa specific functionality (Smartnodes, PrivateSend, "
+"Disable all Smartmeme specific functionality (Smartnodes, PrivateSend, "
 "InstantSend, Governance) (0-1, default: %u)"),
 QT_TRANSLATE_NOOP("smartmeme-core", ""
 "Discover own IP addresses (default: 1 when listening and no -externalip or -"
@@ -336,7 +336,7 @@ QT_TRANSLATE_NOOP("smartmeme-core", ""
 "Whitelisted peers cannot be DoS banned and their transactions are always "
 "relayed, even if they are already in the mempool, useful e.g. for a gateway"),
 QT_TRANSLATE_NOOP("smartmeme-core", ""
-"You are starting in lite mode, most Neoxa-specific functionality is disabled."),
+"You are starting in lite mode, most Smartmeme-specific functionality is disabled."),
 QT_TRANSLATE_NOOP("smartmeme-core", ""
 "You need to rebuild the database using -reindex to change -timestampindex"),
 QT_TRANSLATE_NOOP("smartmeme-core", ""

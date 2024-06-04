@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2019 The Dash Core developers
-// Copyright (c) 2020 The Neoxa developers
+// Copyright (c) 2020 The Smartmeme developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -96,7 +96,7 @@
 // Application startup time (used for uptime calculation)
 const int64_t nStartupTime = GetTime();
 
-//Neoxa only features
+//Smartmeme only features
 bool fSmartnodeMode = false;
 bool fLiteMode = false;
 /**
@@ -267,7 +267,7 @@ const CLogCategoryDesc LogCategories[] =
     {BCLog::ALL, "1"},
     {BCLog::ALL, "all"},
 
-    //Start Neoxa
+    //Start Smartmeme
     {BCLog::CHAINLOCKS, "chainlocks"},
     {BCLog::GOBJECT, "gobject"},
     {BCLog::INSTANTSEND, "instantsend"},
@@ -279,7 +279,7 @@ const CLogCategoryDesc LogCategories[] =
     {BCLog::MNSYNC, "mnsync"},
     {BCLog::PRIVATESEND, "privatesend"},
     {BCLog::SPORK, "spork"},
-    //End Neoxa
+    //End Smartmeme
 
 };
 
@@ -619,13 +619,13 @@ void PrintExceptionContinue(const std::exception_ptr pex, const char* pszThread)
 
 fs::path GetDefaultDataDir()
 {
-    // Windows < Vista: C:\Documents and Settings\Username\Application Data\NeoxaCore
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\NeoxaCore
-    // Mac: ~/Library/Application Support/NeoxaCore
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\SmartmemeCore
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\SmartmemeCore
+    // Mac: ~/Library/Application Support/SmartmemeCore
     // Unix: ~/.smartmemecore
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "NeoxaCore";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "SmartmemeCore";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -635,7 +635,7 @@ fs::path GetDefaultDataDir()
         pathRet = fs::path(pszHome);
 #ifdef MAC_OSX
     // Mac
-    return pathRet / "Library/Application Support/NeoxaCore";
+    return pathRet / "Library/Application Support/SmartmemeCore";
 #else
     // Unix
     return pathRet / ".smartmemecore";

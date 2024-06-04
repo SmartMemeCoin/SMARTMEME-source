@@ -1,7 +1,7 @@
 Translation Strings Policy
 ===========================
 
-This document provides guidelines for internationalization of the Neoxa Core software.
+This document provides guidelines for internationalization of the Smartmeme Core software.
 
 How to translate?
 ------------------
@@ -75,10 +75,10 @@ In Qt code use tr's third argument for optional plurality. For example:
 This adds `<numerusform>`s to the respective `.ts` file, which can be translated separately depending on the language. In English, this is simply:
 
     <message numerus="yes">
-        <source>%n active connection(s) to Neoxa network</source>
+        <source>%n active connection(s) to Smartmeme network</source>
         <translation>
-            <numerusform>%n active connection to Neoxa network</numerusform>
-            <numerusform>%n active connections to Neoxa network</numerusform>
+            <numerusform>%n active connection to Smartmeme network</numerusform>
+            <numerusform>%n active connections to Smartmeme network</numerusform>
         </translation>
     </message>
 

@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2019 The Dash Core developers
-// Copyright (c) 2020 The Neoxa developers
+// Copyright (c) 2020 The Smartmeme developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -438,7 +438,7 @@ UniValue createrawtransaction(const JSONRPCRequest& request)
 		} else {
 			CBitcoinAddress address(name_);
 			if (!address.IsValid())
-				throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid Neoxa address: ")+name_);
+				throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid Smartmeme address: ")+name_);
 
 			if (setAddress.count(address))
 				throw JSONRPCError(RPC_INVALID_PARAMETER, std::string("Invalid parameter, duplicated address: ")+name_);
@@ -520,7 +520,7 @@ UniValue decoderawtransaction(const JSONRPCRequest& request)
             "         \"reqSigs\" : n,            (numeric) The required sigs\n"
             "         \"type\" : \"pubkeyhash\",  (string) The type, eg 'pubkeyhash'\n"
             "         \"addresses\" : [           (json array of string)\n"
-            "           \"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG\"   (string) Neoxa address\n"
+            "           \"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG\"   (string) Smartmeme address\n"
             "           ,...\n"
             "         ]\n"
             "       }\n"

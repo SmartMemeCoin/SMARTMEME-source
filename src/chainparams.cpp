@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin Core developers
 // Copyright (c) 2014-2020 The Dash Core developers
-// Copyright (c) 2020 The Neoxa developers
+// Copyright (c) 2020 The Smartmeme developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -376,8 +376,8 @@ public:
         consensus.DIP0008Enabled = true;
        // consensus.DIP0003EnforcementHeight = 1047200;
         consensus.powLimit = uint256S("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 20
-        consensus.nPowTargetTimespan = 2016 * 60; // Neoxa: 1 day
-        consensus.nPowTargetSpacing = 1 * 60; // Neoxa: 1 minutes
+        consensus.nPowTargetTimespan = 2016 * 60; // Smartmeme: 1 day
+        consensus.nPowTargetSpacing = 1 * 60; // Smartmeme: 1 minutes
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nPowDGWHeight = 1;
@@ -437,14 +437,73 @@ public:
         pchMessageStart[3] = 0x45; // E
         nDefaultPort = 7282;
         nPruneAfterHeight = 100000;
-        FindMainNetGenesisBlock(1717416548, 0x20001fff, "main");
+        //FindMainNetGenesisBlock(1717416548, 0x20001fff, "main");
         uint32_t nGenesisTime = 1717416548;	
 
-	    genesis = CreateGenesisBlock(nGenesisTime, 3244753, 0x20001fff, 4, 5000 * COIN);
+        // arith_uint256 test;
+        // bool fNegative;    
+        // bool fOverflow;
+        // test.SetCompact(0x1e00ffff, &fNegative, &fOverflow);
+        // std::cout << "Test threshold: " << test.GetHex() << "\n\n";
+
+        // int genesisNonce = 0;
+        // uint256 TempHashHolding = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000");
+        // uint256 BestBlockHash = uint256S("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        // for (int i=0;i<40000000;i++) {
+        //     genesis = CreateGenesisBlock(nGenesisTime, i, 0x1e00ffff, 4, 5000 * COIN);
+        //     genesis.hashPrevBlock = TempHashHolding;
+		// 	// Depending on when the timestamp is on the genesis block. You will need to use GetX16RHash or GetX16RV2Hash. Replace GetHash() with these below
+        //     consensus.hashGenesisBlock = genesis.GetX16RHash();
+
+        //     arith_uint256 BestBlockHashArith = UintToArith256(BestBlockHash);
+        //     if (UintToArith256(consensus.hashGenesisBlock) < BestBlockHashArith) {
+        //         BestBlockHash = consensus.hashGenesisBlock;
+        //         std::cout << "CHOOSE: consensus.hashGenesisBlock.GetHex(): " << consensus.hashGenesisBlock.GetHex() << " Nonce: " << i << " nGenesisTime: " << nGenesisTime << "\n";
+        //         std::cout << "CHOOSE: BestBlockHash.GetHex(): " << BestBlockHash.GetHex() << " Nonce: " << i << " nGenesisTime: " << nGenesisTime << "\n";
+        //         std::cout << "CHOOSE: genesis.GetX16RHash().GetHex(): " << genesis.GetX16RHash().GetHex() << " Nonce: " << i << " nGenesisTime: " << nGenesisTime << "\n";
+        //         std::cout << "CHOOSE: PrevBlockHash: " << genesis.hashPrevBlock.GetHex() << "\n";
+        //     }
+
+        //     //TempHashHolding = consensus.hashGenesisBlock;
+
+        //     if (BestBlockHashArith < test) {
+        //         genesisNonce = i - 1;
+        //         break;
+        //     }
+        //     std::cout << "	 consensus.hashGenesisBlock.GetHex(): " << consensus.hashGenesisBlock.GetHex() << " Nonce: " << i << "\n";
+        // }
+        // std::cout << "\n";
+        // std::cout << "\n";
+        // std::cout << "\n";
+
+        // std::cout << "BestBlockHash.GetHex() to 0x" << BestBlockHash.GetHex() << std::endl;
+        // std::cout << "genesis.GetX16RHash().GetHex() to 0x" << genesis.GetX16RHash().GetHex() << std::endl;
+        // std::cout << "Genesis Nonce to " << genesisNonce << std::endl;
+        // std::cout << "Genesis Merkle " << genesis.hashMerkleRoot.GetHex() << std::endl;
+
+        // std::cout << "\n";
+        // std::cout << "\n";
+        // int totalHits = 0;
+        // double totalTime = 0.0;
+
+        // for(int x = 0; x < 16; x++) {
+        //     totalHits += algoHashHits[x];
+        //     totalTime += algoHashTotal[x];
+        //     std::cout << "hash algo " << x << " hits " << algoHashHits[x] << " total " << algoHashTotal[x] << " avg " << algoHashTotal[x]/algoHashHits[x] << std::endl;
+        // }
+
+        // std::cout << "Totals: hash algo " <<  " hits " << totalHits << " total " << totalTime << " avg " << totalTime/totalHits << std::endl;
+
+        // genesis.hashPrevBlock = TempHashHolding;
+
+        // return;
+
+
+	    genesis = CreateGenesisBlock(nGenesisTime, 11366442, 0x1e00ffff, 4, 5000 * COIN);
         consensus.hashGenesisBlock = genesis.GetX16RHash();	
         //std::cout << "hashGenesisBlock " << consensus.hashGenesisBlock.GetHex() << std::endl;
-	    assert(consensus.hashGenesisBlock == uint256S("0x"));
-        assert(genesis.hashMerkleRoot == uint256S("0x"));
+	    assert(consensus.hashGenesisBlock == uint256S("0x000000264ad84918946b8c1319ea7042f36bd6808799104c02ff2511429ba19d"));
+        assert(genesis.hashMerkleRoot == uint256S("7c5152cafed4f81ec1c3e2758ee5aeda41a30a93883da3df24b255307454d819"));
 
         //todo: Make dnsseeder ourselfs
         // vSeeds.emplace_back("seed.smartmeme.net", false);
@@ -458,8 +517,8 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
 
-        // SMARTMEME BIP44 cointype in mainnet is '1668'
-        nExtCoinType = 1668;
+        // SMARTMEME BIP44 cointype in mainnet is '662'
+        nExtCoinType = 662;
 
         vector<FounderRewardStructure> rewardStructures = { {INT_MAX, 5} }; // 5% founder/dev fee forever
                                                             
@@ -503,7 +562,7 @@ public:
 	    };
 
         chainTxData = ChainTxData{
-            // Update as we know more about the contents of the Neoxa chain
+            // Update as we know more about the contents of the Smartmeme chain
         	1717416548, // * UNIX timestamp of last known number of transactions 2021-06-18 22:03:06 UTC
             0,    // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
@@ -573,8 +632,8 @@ public:
         consensus.BIPCSVEnabled = true;
      //   consensus.DIP0003EnforcementHeight = 7300;
         consensus.powLimit = uint256S("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 20
-        consensus.nPowTargetTimespan = 2016 * 60; // Neoxa: 1 day
-        consensus.nPowTargetSpacing = 60; // Neoxa: 1 minutes
+        consensus.nPowTargetTimespan = 2016 * 60; // Smartmeme: 1 day
+        consensus.nPowTargetSpacing = 60; // Smartmeme: 1 minutes
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nPowDGWHeight = 1;
@@ -630,33 +689,33 @@ public:
         nDefaultPort = 4572;
         nPruneAfterHeight = 1000;
         
-        uint32_t nGenesisTime = 1685977420;  // Sunday, 22 May 2022 19:26:45
+        uint32_t nGenesisTime = 1717416600;  // Sunday, 22 May 2022 19:26:45
         //FindMainNetGenesisBlock(nGenesisTime, 0x20001fff, "test");    
 
-        genesis = CreateGenesisBlock(nGenesisTime, 2250, 0x20001fff, 4, 5000 * COIN);
+        genesis = CreateGenesisBlock(nGenesisTime, 1733, 0x20001fff, 4, 5000 * COIN);
         uint256 mix_hash;
         consensus.hashGenesisBlock = genesis.GetHashFull(mix_hash);
         genesis.mix_hash = mix_hash;
-        assert(consensus.hashGenesisBlock == uint256S("000b93d1594035cc0ebe80bc5f69e3cebfbf80069480c8f64e7f974d1627d8a6"));
-        assert(genesis.hashMerkleRoot == uint256S("7c1d71731b98c560a80cee3b88993c8c863342b9661894304fd843bf7e75a41f"));		
+        assert(consensus.hashGenesisBlock == uint256S("001cba21b0af83ac9397f432dfb4b4acd657769c1c8fb5163d74c9ac3a9753e7"));
+        assert(genesis.hashMerkleRoot == uint256S("7c5152cafed4f81ec1c3e2758ee5aeda41a30a93883da3df24b255307454d819"));		
 		
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
         vSeeds.emplace_back("testnet.smartmeme.net", false);
 
-        // Testnet Neoxa addresses start with 'r'
+        // Testnet Smartmeme addresses start with 'r'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,42);
-        // Testnet Neoxa script addresses start with '8' or '9'
+        // Testnet Smartmeme script addresses start with '8' or '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,124);
         // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,114);
-        // Testnet Neoxa BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+        // Testnet Smartmeme BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
-        // Testnet Neoxa BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+        // Testnet Smartmeme BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
 
-        // Testnet Neoxa BIP44 coin type is '1' (All coin's testnet default)
+        // Testnet Smartmeme BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 10227;
 
         // long living quorum params
@@ -704,7 +763,7 @@ public:
         };
 
         chainTxData = ChainTxData{
-        	// Update as we know more about the contents of the Neoxa chain
+        	// Update as we know more about the contents of the Smartmeme chain
             //1658331968, // * UNIX timestamp of last known number of transactions
             //4108,     // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
@@ -776,8 +835,8 @@ public:
         consensus.DIP0008Enabled = true;
        // consensus.DIP0003EnforcementHeight = 2; // DIP0003 activated immediately on devnet
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 1
-        consensus.nPowTargetTimespan = 24 * 60 * 60; // Neoxa: 1 day
-        consensus.nPowTargetSpacing = 2.5 * 60; // Neoxa: 2.5 minutes
+        consensus.nPowTargetTimespan = 24 * 60 * 60; // Smartmeme: 1 day
+        consensus.nPowTargetSpacing = 2.5 * 60; // Smartmeme: 2.5 minutes
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
         consensus.nPowDGWHeight = 60;
@@ -816,18 +875,18 @@ public:
         vSeeds.clear();
         //vSeeds.push_back(CDNSSeedData("smartmemeevo.org",  "devnet-seed.smartmemeevo.org"));
 
-        // Testnet Neoxa addresses start with 'y'
+        // Testnet Smartmeme addresses start with 'y'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,140);
-        // Testnet Neoxa script addresses start with '8' or '9'
+        // Testnet Smartmeme script addresses start with '8' or '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,19);
         // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
-        // Testnet Neoxa BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+        // Testnet Smartmeme BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
-        // Testnet Neoxa BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+        // Testnet Smartmeme BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
 
-        // Testnet Neoxa BIP44 coin type is '1' (All coin's testnet default)
+        // Testnet Smartmeme BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
 
         // long living quorum params
@@ -894,8 +953,8 @@ public:
         consensus.DIP0008Enabled = true;
        // consensus.DIP0003EnforcementHeight = 500;
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 1
-        consensus.nPowTargetTimespan = 24 * 60 * 60; // Neoxa: 1 day
-        consensus.nPowTargetSpacing = 2 * 60; // Neoxa: 2.5 minutes
+        consensus.nPowTargetTimespan = 24 * 60 * 60; // Smartmeme: 1 day
+        consensus.nPowTargetSpacing = 2 * 60; // Smartmeme: 2.5 minutes
         consensus.nMinimumDifficultyBlocks = 2000;
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
@@ -925,9 +984,9 @@ public:
         nDefaultPort = 19899;
         nPruneAfterHeight = 1000;
         
-        //FindMainNetGenesisBlock(1417713337, 0x20001fff, "regtest");
+        //FindMainNetGenesisBlock(1717416600, 0x20001fff, "regtest");
 
-        genesis = CreateGenesisBlock(1417713337, 2765, 0x20001fff, 4, 5000 * COIN);
+        genesis = CreateGenesisBlock(1717416600, 2765, 0x20001fff, 4, 5000 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         assert(consensus.hashGenesisBlock == uint256S("0x000432ed6cdd023a95d044131e1044a4a14ecdffeb6d97dcaa9d4ba36800f61a"));
         assert(genesis.hashMerkleRoot == uint256S("0x7c1d71731b98c560a80cee3b88993c8c863342b9661894304fd843bf7e75a41f"));
@@ -969,18 +1028,18 @@ public:
             0
         };
 
-        // Regtest Neoxa addresses start with 'y'
+        // Regtest Smartmeme addresses start with 'y'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,140);
-        // Regtest Neoxa script addresses start with '8' or '9'
+        // Regtest Smartmeme script addresses start with '8' or '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,19);
         // Regtest private keys start with '9' or 'c' (Bitcoin defaults)
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
-        // Regtest Neoxa BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+        // Regtest Smartmeme BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
-        // Regtest Neoxa BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+        // Regtest Smartmeme BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
 
-        // Regtest Neoxa BIP44 coin type is '1' (All coin's testnet default)
+        // Regtest Smartmeme BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
 
         // long living quorum params

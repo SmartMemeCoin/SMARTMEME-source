@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2020 The Dash Core developers
-// Copyright (c) 2020 The Neoxa developers
+// Copyright (c) 2020 The Smartmeme developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -66,7 +66,7 @@
 #include <boost/thread.hpp>
 
 #if defined(NDEBUG)
-# error "Neoxa Core cannot be compiled without assertions."
+# error "Smartmeme Core cannot be compiled without assertions."
 #endif
 
 /**
@@ -116,7 +116,7 @@ static void CheckBlockIndex(const Consensus::Params& consensusParams);
 /** Constant stuff for coinbase transactions we create: */
 CScript COINBASE_FLAGS;
 
-const std::string strMessageMagic = "Neoxa Signed Message:\n";
+const std::string strMessageMagic = "Smartmeme Signed Message:\n";
 
 // Internal stuff
 namespace {
@@ -627,7 +627,7 @@ static bool AcceptToMemoryPoolWorker(const CChainParams& chainparams, CTxMemPool
         {
             const CTransaction *ptxConflicting = itConflicting->second;
 
-            // Transaction conflicts with mempool and RBF doesn't exist in Neoxa
+            // Transaction conflicts with mempool and RBF doesn't exist in Smartmeme
             return state.Invalid(false, REJECT_DUPLICATE, "txn-mempool-conflict");
         }
     }
@@ -1187,15 +1187,33 @@ NOTE:   unlike bitcoin we are using PREVIOUS block height here,
 */
 CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params& consensusParams, bool fSuperblockPartOnly)
 {
-	int halvings = nPrevHeight / consensusParams.nSubsidyHalvingInterval;
-    // Force block reward to zero when right shift is undefined.
-    if (halvings >= 64)
-        return 0;
+    double dDiff;
+    CAmount nSubsidyBase;
 
-    CAmount nSubsidy = 5000 * COIN;
-    // Subsidy is cut in half every 2,100,000 blocks which will occur approximately every 4 years.
-    nSubsidy >>= halvings;
-    return nSubsidy;
+    if (nPrevHeight == 0) {
+        nSubsidyBase = 5000000;
+    } else if (nPrevHeight <= 5 ) {
+        nSubsidyBase = 525;
+    } else if (nPrevHeight <= 10) {
+        nSubsidyBase = 262.5;
+    } else if (nPrevHeight <= 15) {
+        nSubsidyBase = 131.25;
+    } else if (nPrevHeight <= 20) {
+        nSubsidyBase = 65.625;
+    } else if (nPrevHeight <= 25) {
+        nSubsidyBase = 32.8125;
+    } else if (nPrevHeight <= 30) {
+        nSubsidyBase = 16.4025;
+    } else if (nPrevHeight <= 40) {
+        nSubsidyBase = 8.203125;
+    } else if (nPrevHeight <= 45) {
+        nSubsidyBase = 4.1015625;
+    } else if (nPrevHeight <= 50) {
+        nSubsidyBase = 2.05078125;
+    } else {
+	    nSubsidyBase = 0.4;
+    }
+    CAmount nSubsidy = nSubsidyBase * COIN;
 }
 
 CAmount GetSmartnodePayment(int nHeight, CAmount blockValue, CAmount specialTxFees)
@@ -2245,7 +2263,7 @@ static int64_t nTimeSubsidy = 0;
 static int64_t nTimeValueValid = 0;
 static int64_t nTimePayeeValid = 0;
 static int64_t nTimeProcessSpecial = 0;
-static int64_t nTimeNeoxaSpecific = 0;
+static int64_t nTimeSmartmemeSpecific = 0;
 static int64_t nTimeConnect = 0;
 static int64_t nTimeIndex = 0;
 static int64_t nTimeCallbacks = 0;
@@ -2656,8 +2674,8 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
     int64_t nTime5_5 = GetTimeMicros(); nTimeProcessSpecial += nTime5_5 - nTime5_4;
     LogPrint(BCLog::BENCHMARK, "      - ProcessSpecialTxsInBlock: %.2fms [%.2fs]\n", 0.001 * (nTime5_5 - nTime5_4), nTimeProcessSpecial * 0.000001);
 
-    int64_t nTime5 = GetTimeMicros(); nTimeNeoxaSpecific += nTime5 - nTime4;
-    LogPrint(BCLog::BENCHMARK, "    - Neoxa specific: %.2fms [%.2fs]\n", 0.001 * (nTime5 - nTime4), nTimeNeoxaSpecific * 0.000001);
+    int64_t nTime5 = GetTimeMicros(); nTimeSmartmemeSpecific += nTime5 - nTime4;
+    LogPrint(BCLog::BENCHMARK, "    - Smartmeme specific: %.2fms [%.2fs]\n", 0.001 * (nTime5 - nTime4), nTimeSmartmemeSpecific * 0.000001);
 
     // END SMARTMEME
 

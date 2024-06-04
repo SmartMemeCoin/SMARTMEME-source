@@ -1,4 +1,4 @@
-/* Copyright (c) 2020 The Neoxa Core developers
+/* Copyright (c) 2020 The Smartmeme Core developers
  * Distributed under the MIT software license, see the accompanying
  * file COPYING or http://www.opensource.org/licenses/mit-license.php.
  *

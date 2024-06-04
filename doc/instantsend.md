@@ -11,7 +11,7 @@ When a "Transaction Lock" occurs the hash of the related transaction is broadcas
 * `zmqpubrawtxlock`: publishes the raw transaction when locked via InstantSend
 * `zmqpubhashtxlock`: publishes the transaction hash when locked via InstantSend
 
-This mechanism has been integrated into Bitcore-Node-Neoxa which allows for notification to be broadcast through Insight API in one of two ways:
+This mechanism has been integrated into Bitcore-Node-Smartmeme which allows for notification to be broadcast through Insight API in one of two ways:
 * WebSocket: [https://github.com/smartmeme/insight-api-smartmeme#web-socket-api](https://github.com/smartmeme/insight-api-smartmeme#web-socket-api)
 * API: [https://github.com/smartmeme/insight-api-smartmeme#instantsend-transactions](https://github.com/smartmeme/insight-api-smartmeme#instantsend-transactions)
 

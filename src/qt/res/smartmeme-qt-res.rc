@@ -19,8 +19,8 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "Neoxa"
-            VALUE "FileDescription",    PACKAGE_NAME " (GUI node for Neoxa)"
+            VALUE "CompanyName",        "Smartmeme"
+            VALUE "FileDescription",    PACKAGE_NAME " (GUI node for Smartmeme)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "smartmeme-qt"
             VALUE "LegalCopyright",     COPYRIGHT_STR

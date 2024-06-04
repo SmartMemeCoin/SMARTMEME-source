@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2020 The Dash Core developers
-// Copyright (c) 2020 The Neoxa developers
+// Copyright (c) 2020 The Smartmeme developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -1085,7 +1085,7 @@ UniValue getsuperblockbudget(const JSONRPCRequest& request)
 static const CRPCCommand commands[] =
 { //  category              name                      actor (function)         okSafe argNames
   //  --------------------- ------------------------  -----------------------  ------ ----------
-    /* Neoxa features */
+    /* Smartmeme features */
     { "smartmeme",               "getgovernanceinfo",      &getgovernanceinfo,      true,  {} },
     { "smartmeme",               "getsuperblockbudget",    &getsuperblockbudget,    true,  {"index"} },
     { "smartmeme",               "gobject",                &gobject,                true,  {} },

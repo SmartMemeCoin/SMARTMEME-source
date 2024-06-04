@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2019 The Dash Core developers
-// Copyright (c) 2020 The Neoxa developers
+// Copyright (c) 2020 The Smartmeme developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -47,7 +47,7 @@
 
 //////////////////////////////////////////////////////////////////////////////
 //
-// NeoxaMiner
+// SmartmemeMiner
 //
 
 //
@@ -561,9 +561,9 @@ CWallet *GetFirstWallet() {
     return(NULL);
 }
 
-void static NeoxaMiner(const CChainParams& chainparams)
+void static SmartmemeMiner(const CChainParams& chainparams)
 {
-    LogPrintf("NeoxaMiner -- started\n");
+    LogPrintf("SmartmemeMiner -- started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
     RenameThread("smartmeme-miner");
 
@@ -576,7 +576,7 @@ void static NeoxaMiner(const CChainParams& chainparams)
         pWallet = GetFirstWallet();
 
     if (!EnsureWalletIsAvailable(pWallet, false)) {
-        LogPrintf("NeoxaMiner -- Wallet not available\n");
+        LogPrintf("SmartmemeMiner -- Wallet not available\n");
     }
     #endif
 
@@ -637,13 +637,13 @@ void static NeoxaMiner(const CChainParams& chainparams)
 
             if (!pblocktemplate.get())
             {
-                LogPrintf("NeoxaMiner -- Keypool ran out, please call keypoolrefill before restarting the mining thread\n");
+                LogPrintf("SmartmemeMiner -- Keypool ran out, please call keypoolrefill before restarting the mining thread\n");
                 return;
             }
             CBlock *pblock = &pblocktemplate->block;
             IncrementExtraNonce(pblock, pindexPrev, nExtraNonce);
 
-            LogPrintf("NeoxaMiner -- Running miner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
+            LogPrintf("SmartmemeMiner -- Running miner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
                 ::GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION));
 
             //
@@ -664,7 +664,7 @@ void static NeoxaMiner(const CChainParams& chainparams)
                         pblock->mix_hash = mix_hash;
                         // Found a solution
                         SetThreadPriority(THREAD_PRIORITY_NORMAL);
-                        LogPrintf("NeoxaMiner:\n  proof-of-work found\n  hash: %s\n  target: %s\n", hash.GetHex(), hashTarget.GetHex());
+                        LogPrintf("SmartmemeMiner:\n  proof-of-work found\n  hash: %s\n  target: %s\n", hash.GetHex(), hashTarget.GetHex());
                         ProcessBlockFound(pblock, chainparams, hash);
                         SetThreadPriority(THREAD_PRIORITY_LOWEST);
                         coinbaseScript->KeepScript();
@@ -681,7 +681,7 @@ void static NeoxaMiner(const CChainParams& chainparams)
                     if (nHashesDone % 1000 == 0) {   //Calculate hashing speed
                         nHashesPerSec = nHashesDone / (((GetTimeMicros() - nMiningTimeStart) / 1000000.00) + 1);
                         LogPrintf("nNonce: %d, hashRate %f\n",pblock->nNonce, nHashesPerSec);
-                        //LogPrintf("NeoxaMiner:\n  proof-of-work in progress \n  hash: %s\n  target: %s\n, different=%s\n", hash.GetHex(), hashTarget.GetHex(), (UintToArith256(hash) - hashTarget));
+                        //LogPrintf("SmartmemeMiner:\n  proof-of-work in progress \n  hash: %s\n  target: %s\n, different=%s\n", hash.GetHex(), hashTarget.GetHex(), (UintToArith256(hash) - hashTarget));
                     }
                     if ((pblock->nNonce & 0xFF) == 0)
                         break;
@@ -713,12 +713,12 @@ void static NeoxaMiner(const CChainParams& chainparams)
     }
     catch (const boost::thread_interrupted&)
     {
-        LogPrintf("NeoxaMiner -- terminated\n");
+        LogPrintf("SmartmemeMiner -- terminated\n");
         throw;
     }
     catch (const std::runtime_error &e)
     {
-        LogPrintf("NeoxaMiner -- runtime error: %s\n", e.what());
+        LogPrintf("SmartmemeMiner -- runtime error: %s\n", e.what());
         return;
     }
 }
@@ -750,7 +750,7 @@ int GenerateSmartMemes(bool fGenerate, int nThreads, const CChainParams& chainpa
     nHashesPerSec = 0;
 
     for (int i = 0; i < nThreads; i++){
-        minerThreads->create_thread(boost::bind(&NeoxaMiner, boost::cref(chainparams)));
+        minerThreads->create_thread(boost::bind(&SmartmemeMiner, boost::cref(chainparams)));
     }
 
     return(numCores);

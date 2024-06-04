@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2019 The Dash Core developers
-// Copyright (c) 2020 The Neoxa developers
+// Copyright (c) 2020 The Smartmeme developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -44,7 +44,7 @@
 #define DBG( x )
 #endif
 
-//Neoxa only features
+//Smartmeme only features
 
 extern bool fSmartnodeMode;
 extern bool fLiteMode;
@@ -128,7 +128,7 @@ namespace BCLog {
         LEVELDB     = (1 << 20),
         REWARDS     = (1 << 21),
 
-        //Start Neoxa
+        //Start Smartmeme
         CHAINLOCKS  = ((uint64_t)1 << 32),
         GOBJECT     = ((uint64_t)1 << 33),
         INSTANTSEND = ((uint64_t)1 << 34),
@@ -140,7 +140,7 @@ namespace BCLog {
         MNSYNC      = ((uint64_t)1 << 40),
         PRIVATESEND = ((uint64_t)1 << 41),
         SPORK       = ((uint64_t)1 << 42),
-        //End Neoxa
+        //End Smartmeme
 
         ALL         = ~(uint64_t)0,
     };

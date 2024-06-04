@@ -30,7 +30,7 @@ packages:
 - "fonts-tuffy"
 - "ccache"
 remotes:
-- "url": "https://github.com/The-Neoxa-Endeavor/smartmeme.git"
+- "url": "https://github.com/The-Smartmeme-Endeavor/smartmeme.git"
   "dir": "smartmeme"
 files:
 - "MacOSX10.11.sdk.tar.gz"

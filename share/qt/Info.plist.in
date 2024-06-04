@@ -26,16 +26,16 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>Neoxa-Qt</string>
+  <string>Smartmeme-Qt</string>
 
   <key>CFBundleName</key>
-  <string>Neoxa-Qt</string>
+  <string>Smartmeme-Qt</string>
 
   <key>LSHasLocalizedDisplayName</key>
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>org.smartmeme.Neoxa-Qt</string>
+  <string>org.smartmeme.Smartmeme-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -43,7 +43,7 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>org.smartmeme.NeoxaPayment</string>
+      <string>org.smartmeme.SmartmemePayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
         <string>smartmeme</string>
@@ -57,7 +57,7 @@
       <key>UTTypeIdentifier</key>
       <string>org.smartmeme.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>Neoxa payment request</string>
+      <string>Smartmeme payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>

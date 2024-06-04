@@ -11,7 +11,7 @@
 
 /**
  * CBaseChainParams defines the base parameters (shared between smartmeme-cli and smartmemed)
- * of a given instance of the Neoxa system.
+ * of a given instance of the Smartmeme system.
  */
 class CBaseChainParams
 {

@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2019 The Dash Core developers
-// Copyright (c) 2020 The Neoxa developers
+// Copyright (c) 2020 The Smartmeme developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -69,9 +69,9 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case SMME: return QString("Neoxa");
-            case mSMME: return QString("Milli-Neoxa (1 / 1" THIN_SP_UTF8 "000)");
-            case uSMME: return QString("Micro-Neoxa (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case SMME: return QString("Smartmeme");
+            case mSMME: return QString("Milli-Smartmeme (1 / 1" THIN_SP_UTF8 "000)");
+            case uSMME: return QString("Micro-Smartmeme (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
@@ -79,9 +79,9 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case SMME: return QString("TestNeoxa");
-            case mSMME: return QString("Milli-TestNeoxa (1 / 1" THIN_SP_UTF8 "000)");
-            case uSMME: return QString("Micro-TestNeoxa (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case SMME: return QString("TestSmartmeme");
+            case mSMME: return QString("Milli-TestSmartmeme (1 / 1" THIN_SP_UTF8 "000)");
+            case uSMME: return QString("Micro-TestSmartmeme (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }

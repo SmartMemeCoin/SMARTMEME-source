@@ -1,5 +1,5 @@
 [Unit]
-Description=Neoxa's distributed currency daemon
+Description=Smartmeme's distributed currency daemon
 After=network.target
 
 [Service]

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 The Neoxa developer
+ * Copyright (c) 2020 The Smartmeme developer
  * Distributed under the MIT software license, see the accompanying
  * file COPYING or http://www.opensource.org/licenses/mit-license.php.
  * 

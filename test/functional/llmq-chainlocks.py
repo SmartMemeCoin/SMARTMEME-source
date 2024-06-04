@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # Copyright (c) 2015-2020 The Dash Core developers
-# Copyright (c) 2020 The Neoxa developers
+# Copyright (c) 2020 The Smartmeme developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 import time
 
 from test_framework.mininode import *
-from test_framework.test_framework import NeoxaTestFramework
+from test_framework.test_framework import SmartmemeTestFramework
 from test_framework.util import *
 
 '''
@@ -17,7 +17,7 @@ Checks LLMQs based ChainLocks
 
 '''
 
-class LLMQChainLocksTest(NeoxaTestFramework):
+class LLMQChainLocksTest(SmartmemeTestFramework):
     def set_test_params(self):
         self.set_smartmeme_test_params(6, 5, fast_dip3_enforcement=True)
 

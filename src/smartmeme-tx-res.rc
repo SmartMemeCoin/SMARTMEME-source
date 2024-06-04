@@ -16,8 +16,8 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "Neoxa"
-            VALUE "FileDescription",    "smartmeme-tx (CLI Neoxa transaction editor utility)"
+            VALUE "CompanyName",        "Smartmeme"
+            VALUE "FileDescription",    "smartmeme-tx (CLI Smartmeme transaction editor utility)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "smartmeme-tx"
             VALUE "LegalCopyright",     COPYRIGHT_STR
