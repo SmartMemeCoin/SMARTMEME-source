@@ -1,7 +1,7 @@
 Smartmeme Core
 ==================================
 
-https://Smartmeme.net
+https://Smartmeme.online/
 
 What is Smartmeme?
 -----------------
