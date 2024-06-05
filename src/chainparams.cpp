@@ -512,7 +512,7 @@ public:
             0.0       // * estimated number of transactions per second after that timestamp
         };
 
-         // Burn Amounts
+        // Burn Amounts
         nIssueAssetBurnAmount = 500 * COIN;
         nReissueAssetBurnAmount = 100 * COIN;
         nIssueSubAssetBurnAmount = 100 * COIN;
