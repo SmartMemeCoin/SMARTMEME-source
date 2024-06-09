@@ -1191,23 +1191,23 @@ CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params&
 
     if (nPrevHeight == 0) {
         nSubsidyBase = 5000000;
-    } else if (nPrevHeight <= 26000 ) {
+    } else if (nPrevHeight <= 42000 ) {
         nSubsidyBase = 200;
-    } else if (nPrevHeight <= 52000) {
+    } else if (nPrevHeight <= 105000) {
         nSubsidyBase = 100;
-    } else if (nPrevHeight <= 78000) {
+    } else if (nPrevHeight <= 199500) {
         nSubsidyBase = 50;
-    } else if (nPrevHeight <= 104000) {
+    } else if (nPrevHeight <= 317625) {
         nSubsidyBase = 25;
-    } else if (nPrevHeight <= 130000) {
+    } else if (nPrevHeight <= 465281) {
         nSubsidyBase = 12.5;
-    } else if (nPrevHeight <= 156000) {
+    } else if (nPrevHeight <= 649851) {
         nSubsidyBase = 6.25;
-    } else if (nPrevHeight <= 182000) {
+    } else if (nPrevHeight <= 880564) {
         nSubsidyBase = 3.125;
-    } else if (nPrevHeight <= 208000) {
+    } else if (nPrevHeight <= 1168956) {
         nSubsidyBase = 1.5625;
-    } else if (nPrevHeight <= 234000) {
+    } else if (nPrevHeight <= 1529445) {
         nSubsidyBase = 0.78125;
     } else {
 	    nSubsidyBase = 0.4;
