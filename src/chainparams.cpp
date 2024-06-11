@@ -353,7 +353,7 @@ public:
     CMainParams() {
         strNetworkID = "main";
         consensus.nSubsidyHalvingInterval = 26000; // Note: actual number of blocks per calendar year with DGW v3 is ~200700 (for example 449750 - 249050)
-        consensus.nSmartnodePaymentsStartBlock = 60; // 
+        consensus.nSmartnodePaymentsStartBlock = 1; // 
         consensus.nSmartnodePaymentsIncreaseBlock = 158000; // actual historical value
         consensus.nSmartnodePaymentsIncreasePeriod = 576*30; // 17280 - actual historical value
         consensus.nInstantSendConfirmationsRequired = 6;
@@ -437,15 +437,15 @@ public:
         pchMessageStart[3] = 0x45; // E
         nDefaultPort = 7282;
         nPruneAfterHeight = 100000;
-        //FindMainNetGenesisBlock(1717416548, 0x20001fff, "main");
-        uint32_t nGenesisTime = 1717416548;	
+        //FindMainNetGenesisBlock(1717416590, 0x20001fff, "main");
+        uint32_t nGenesisTime = 1717416590;	
         
-	    genesis = CreateGenesisBlock(nGenesisTime, 757, 0x20001fff, 4, 5000 * COIN);
+	    genesis = CreateGenesisBlock(nGenesisTime, 1375, 0x20001fff, 4, 5000 * COIN);
         uint256 mix_hash;
         consensus.hashGenesisBlock = genesis.GetHashFull(mix_hash);
         genesis.mix_hash = mix_hash;
         //std::cout << "hashGenesisBlock " << consensus.hashGenesisBlock.GetHex() << std::endl;
-	    assert(consensus.hashGenesisBlock == uint256S("001ee46cf930ad8cddd5c020a626e18dd9e8f7a73f43a52a41607dee12279200"));
+	    assert(consensus.hashGenesisBlock == uint256S("001dac2ee224946bd22e7e87839adee474b4ab73620a94d43ede078232be9930"));
         assert(genesis.hashMerkleRoot == uint256S("7c5152cafed4f81ec1c3e2758ee5aeda41a30a93883da3df24b255307454d819"));
 
         //todo: Make dnsseeder ourselfs
@@ -466,11 +466,12 @@ public:
         vector<FounderRewardStructure> rewardStructures = { {INT_MAX, 5} }; // 5% founder/dev fee forever
                                                             
         consensus.nFounderPayment = FounderPayment(rewardStructures, 1);
-        consensus.nSpecialRewardShare = Consensus::SpecialRewardShare(0.8,0.2,0.0);
+        consensus.nSpecialRewardShare = Consensus::SpecialRewardShare(0.35,0.6,0.05);
         consensus.nCollaterals = SmartnodeCollaterals(
           { 
             {INT_MAX, 40000 * COIN}
-          }
+          },
+          { {1, 35}, {INT_MAX, 35} }
         );
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
