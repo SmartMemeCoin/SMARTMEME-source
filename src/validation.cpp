@@ -1219,30 +1219,17 @@ CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params&
 
 CAmount GetSmartnodePayment(int nHeight, CAmount blockValue, CAmount specialTxFees)
 { 
-    LogPrintf("GetSmartnodePayment called with nHeight=%d, blockValue=%lld, specialTxFees=%lld\n", nHeight, blockValue, specialTxFees);
+	size_t mnCount = chainActive.Tip() == nullptr ? 0 : deterministicMNManager->GetListForBlock(chainActive.Tip()).GetAllMNsCount();
 
-    size_t mnCount = chainActive.Tip() == nullptr ? 0 : deterministicMNManager->GetListForBlock(chainActive.Tip()).GetAllMNsCount();
-    LogPrintf("mnCount=%zu\n", mnCount);
+	if(mnCount >= 1 || Params().NetworkIDString() != CBaseChainParams::MAIN) {
+		int percentage = Params().GetConsensus().nCollaterals.getRewardPercentage(nHeight);
+		CAmount specialFeeReward = specialTxFees * Params().GetConsensus().nSpecialRewardShare.smartnode; 
 
-    if (mnCount >= 150 || (mnCount >= 10 && Params().NetworkIDString() != CBaseChainParams::MAIN)) {
-        LogPrintf("Condition met for paying smartnodes\n");
-
-        int percentage = Params().GetConsensus().nCollaterals.getRewardPercentage(nHeight);
-        LogPrintf("Reward percentage=%d\n", percentage);
-
-        CAmount specialFeeReward = specialTxFees * Params().GetConsensus().nSpecialRewardShare.smartnode;
-        LogPrintf("specialFeeReward=%lld\n", specialFeeReward);
-
-        CAmount smartnodePayment = blockValue * percentage / 100 + specialFeeReward;
-        LogPrintf("smartnodePayment=%lld\n", smartnodePayment);
-
-        return smartnodePayment;
-    } else {
-        LogPrintf("Condition not met for paying smartnodes, returning 0\n");
-        return 0;
-    }
+        return blockValue * percentage / 100 + specialFeeReward;
+	} else {
+		return 0;
+	}
 }
-
 
 
 bool IsInitialBlockDownload()
