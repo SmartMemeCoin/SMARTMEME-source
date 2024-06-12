@@ -1219,17 +1219,38 @@ CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params&
 
 CAmount GetSmartnodePayment(int nHeight, CAmount blockValue, CAmount specialTxFees)
 { 
-	size_t mnCount = chainActive.Tip() == nullptr ? 0 : deterministicMNManager->GetListForBlock(chainActive.Tip()).GetAllMNsCount();
 
-	if(mnCount >= 1 || Params().NetworkIDString() != CBaseChainParams::MAIN) {
-		int percentage = Params().GetConsensus().nCollaterals.getRewardPercentage(nHeight);
-		CAmount specialFeeReward = specialTxFees * Params().GetConsensus().nSpecialRewardShare.smartnode; 
+    size_t mnCount = chainActive.Tip() == nullptr ? 0 : deterministicMNManager->GetListForBlock(chainActive.Tip()).GetAllMNsCount();
+    if(mnCount >= 1 || Params().NetworkIDString() != CBaseChainParams::MAIN) {
+        int percentage = Params().GetConsensus().nCollaterals.getRewardPercentage(nHeight);
 
-        return blockValue * percentage / 100 + specialFeeReward;
-	} else {
-		return 0;
-	}
+        CAmount specialFeeReward = specialTxFees * Params().GetConsensus().nSpecialRewardShare.smartnode; 
+        CAmount baseReward = blockValue * percentage / 100;
+        CAmount totalReward = baseReward + specialFeeReward;
+        CAmount additionalReward = 0;
+        if (blockValue > 0) {
+            additionalReward = (totalReward * mnCount) / (mnCount + 1);
+        }
+
+        CAmount finalReward = (totalReward + additionalReward) - (blockValue + specialTxFees + additionalReward + baseReward);
+        LogPrintf("Smartnode Payment Calculation:\n");
+        LogPrintf("Height: %d\n", nHeight);
+        LogPrintf("Block Value: %d\n", blockValue);
+        LogPrintf("Special TX Fees: %d\n", specialTxFees);
+        LogPrintf("Percentage: %d\n", percentage);
+        LogPrintf("Special Fee Reward: %d\n", specialFeeReward);
+        LogPrintf("Base Reward: %d\n", baseReward);
+        LogPrintf("Total Reward: %d\n", totalReward);
+        LogPrintf("Additional Reward: %d\n", additionalReward);
+        LogPrintf("Final Reward: %d\n", finalReward);
+        return finalReward;
+    } else {
+        LogPrintf("No Smartnode Payment: mnCount is %d, NetworkID is %s\n", mnCount, Params().NetworkIDString());
+        return 0;
+    }
 }
+
+
 
 
 bool IsInitialBlockDownload()
