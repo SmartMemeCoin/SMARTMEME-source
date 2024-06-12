@@ -1,47 +1,62 @@
-Smartmeme Core
+# Smartmeme Core
 ==================================
 
-https://Smartmeme.online/
+## [Smartmeme](https://Smartmeme.online/)
 
-What is Smartmeme?
+### What is Smartmeme?
 -----------------
-Smartmeme is a blockchain platform that combines gaming and cryptocurrency by allowing users to earn cryptocurrency while playing games. It operates on a Proof of Work mining system. The concept of "Play to Earn" enables gamers to engage with blockchain technology by playing games and receiving rewards. Smartmeme aims to bridge the gap between the minable cryptocurrency and gaming communities, providing an opportunity for both to benefit from the blockchain. For more detailed information, please refer to the Smartmeme whitepaper available at https://www.smartmeme.net/whitepaper.
+Smartmeme is a revolutionary blockchain platform that fuses the excitement of gaming with the dynamic world of cryptocurrency. Our unique "Play to Earn" model empowers gamers to earn Smartmeme cryptocurrency by playing their favorite games. 
+Operating on a robust Proof of Work mining system, Smartmeme bridges the gap between gaming enthusiasts and the minable cryptocurrency community, offering mutual benefits through blockchain technology. 
+For an in-depth understanding, please refer to our [Smartmeme whitepaper](https://www.smartmeme.online/whitepaper).
 
-Smartmeme is dedicated to providing gamers with the opportunity to earn Smartmeme cryptocurrency while indulging in their favorite games. Our team consists of experienced developers who have a deep passion for gaming, and we are excited to introduce innovative features within our gaming servers. Leveraging the flexibility of PC Gaming and even console platforms, we can utilize modding to incorporate the necessary monitoring functionalities to bring our vision to life.
+At Smartmeme, we are committed to providing an engaging gaming experience where players can earn cryptocurrency. 
+Our team, composed of passionate and experienced developers, is dedicated to introducing innovative features within our gaming servers. Utilizing the flexibility of PC and console platforms, we leverage modding to incorporate essential monitoring functionalities, bringing our vision to life.
 
-In contrast to numerous blockchain projects that lack realistic goals or fail to follow through with their plans, Smartmeme stands apart by delivering a Proof of Concept right from its launch. We believe in demonstrating the feasibility of our ideas and ensuring tangible progress, earning the trust and confidence of our community.
+Unlike many blockchain projects with unrealistic goals or poor follow-through, Smartmeme distinguishes itself by delivering a Proof of Concept at launch. 
+We are dedicated to demonstrating the feasibility of our ideas, ensuring tangible progress, and earning the trust and confidence of our community.
 
-License
+### License
 -------
 
-Smartmeme Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
-information or see https://opensource.org/licenses/MIT.
+Smartmeme Core is released under the terms of the MIT license. For more information, see [COPYING](COPYING) or visit [MIT License](https://opensource.org/licenses/MIT).
 
-Development Process
+### Development Process
 -------------------
 
-The `master` branch is regularly built and tested, but is not guaranteed to be
-completely stable. [Tags](https://github.com/SmartmemeChain/Smartmeme/tags) are created
-regularly to indicate new official, stable release versions of Smartmeme Core.
+Our `master` branch is regularly built and tested, though it is not guaranteed to be completely stable. We create [Tags](https://github.com/SmartmemeChain/Smartmeme/tags) regularly to indicate new official, stable release versions of Smartmeme Core.
 
-The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
+The contribution workflow is detailed in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-Testing
+### Testing
 -------
-Smartmeme Core is dedicated to ensure all new updates that are released will be thoroughly tested before entering the mainnet, this is why we have a testnet running alongside our main chain. While the testnet is running we will regularly run unit_testing that is built into Smartmeme Core and ensure all reports come back as PASSED.
+Smartmeme Core is dedicated to ensuring that all new updates are thoroughly tested before being deployed to the mainnet. We maintain a testnet alongside our main chain to rigorously run unit tests and ensure all reports return as PASSED.
 
+#### Manual Quality Assurance (QA) Testing
+Changes must be tested by someone other than the developer who wrote the code, especially for large or high-risk changes. Adding a test plan to the pull request description is helpful if testing the changes is not straightforward.
 
-### Manual Quality Assurance (QA) Testing
-
-Changes should be tested by somebody other than the developer who wrote the
-code. This is especially important for large or high-risk changes. It is useful
-to add a test plan to the pull request description if testing the changes is
-not straightforward.
-
-About Smartmeme
+### About Smartmeme
 --------------
-
-Smartmeme serves as a versatile currency catering to investors, gamers, and gaming developers alike. To enhance the gaming experience and provide earning opportunities, Smartmeme has implemented innovative Play to Earn mechanisms within popular games such as Minecraft, Rust, and Grand Theft Auto. By participating in these games, our dedicated gamers can effortlessly earn Smartmeme without requiring any financial investment.
+Smartmeme serves as a versatile currency for investors, gamers, and game developers. To enhance the gaming experience and provide earning opportunities, Smartmeme has implemented innovative Play to Earn mechanisms in popular games like Minecraft, Rust, and Grand Theft Auto. Our dedicated gamers can effortlessly earn Smartmeme without any financial investment by participating in these games.
 
 Thank you to the Bitcoin developers.
 Thank you to the Ravencoin developers.
+
+---
+
+## Smartmeme Coin Block Reward Schedule
+
+| Block Range            | Block Reward ($SMME) |
+|------------------------|----------------------|
+| 0 - 42,000             | 200                  |
+| 42,001 - 345,600       | 100                  |
+| 345,601 - 976,800      | 50                   |
+| 976,801 - 2,239,200    | 25                   |
+| 2,239,201 - 3,501,600  | 12.5                 |
+| 3,501,601 - 4,764,000  | 6.25                 |
+| 4,764,001 - 5,955,000  | 5                    |
+| 5,955,001 - 7,146,000  | 4                    |
+| 7,146,001 - 8,337,000  | 3.2                  |
+| 8,337,001 - 9,528,000  | 2.56                 |
+| 9,528,001 and beyond   | 2.048                |
+
+This chart represents the halving schedule for Smartmeme Coin, illustrating the gradual reduction in block rewards over about a 4 year period.
