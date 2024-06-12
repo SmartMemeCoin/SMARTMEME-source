@@ -7,7 +7,7 @@
 -----------------
 Smartmeme is a revolutionary blockchain platform that fuses the excitement of gaming with the dynamic world of cryptocurrency. Our unique "Play to Earn" model empowers gamers to earn Smartmeme cryptocurrency by playing their favorite games. 
 Operating on a robust Proof of Work mining system, Smartmeme bridges the gap between gaming enthusiasts and the minable cryptocurrency community, offering mutual benefits through blockchain technology. 
-For an in-depth understanding, please refer to our [Smartmeme whitepaper](https://www.smartmeme.net/whitepaper).
+For an in-depth understanding, please refer to our [Smartmeme whitepaper](https://www.smartmeme.online/whitepaper).
 
 At Smartmeme, we are committed to providing an engaging gaming experience where players can earn cryptocurrency. 
 Our team, composed of passionate and experienced developers, is dedicated to introducing innovative features within our gaming servers. Utilizing the flexibility of PC and console platforms, we leverage modding to incorporate essential monitoring functionalities, bringing our vision to life.
